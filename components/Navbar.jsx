@@ -9,6 +9,8 @@ import { Menu, X, BookOpen } from "lucide-react";
 const navLinks = [
   { href: "/batches", label: "Batches" },
   { href: "/masterclasses", label: "Masterclasses" },
+  { href: "/roadmap", label: "Roadmap" },
+  { href: "/interview-prep", label: "Interview Prep" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
 ];

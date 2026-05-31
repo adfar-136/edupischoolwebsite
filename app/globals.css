@@ -775,6 +775,183 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* --- PREMIUM NEW SECTIONS (Roadmap & Interview Prep) --- */
+
+/* Glass Card */
+.glass-card {
+  background: rgba(28, 28, 28, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(244, 169, 66, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(244, 169, 66, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 3D Flip Cards */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 280px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background: rgba(28, 28, 28, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #FAF7F2;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(35, 35, 35, 0.95));
+  border: 1px solid rgba(244, 169, 66, 0.3);
+  color: #FAF7F2;
+  transform: rotateY(180deg);
+}
+
+/* Roadmap timeline */
+.timeline-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  top: 0;
+  bottom: 0;
+  left: 30px;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item.completed {
+  opacity: 0.6;
+}
+
+.timeline-badge {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1C1C1C;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  left: 14px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.timeline-item.completed .timeline-badge {
+  background: #2D6A4F;
+  border-color: #52B788;
+  color: white;
+  box-shadow: 0 0 10px rgba(82, 183, 136, 0.5);
+}
+
+/* Glow Highlights */
+.glow-btn {
+  position: relative;
+  background: linear-gradient(90deg, #F4A942, #D4891E);
+  color: #1C1C1C;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(244, 169, 66, 0.3);
+}
+
+.glow-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+  transform: scale(0.5);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.glow-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 25px rgba(244, 169, 66, 0.6);
+}
+
+.glow-btn:hover::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Progress bar container */
+.progress-bar-container {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #52B788, #2D6A4F);
+  border-radius: 10px;
+  transition: width 0.4s ease-out;
+}
+
+
+
 
 
 

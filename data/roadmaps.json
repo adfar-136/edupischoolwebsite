@@ -1,0 +1,525 @@
+{
+  "focusAreas": {
+    "FSD": {
+      "title": "Full-Stack Web Development (MERN)",
+      "description": "Master responsive frontend layouts, secure backend REST APIs, schema design, and production deployments.",
+      "baseWeeks": [
+        {
+          "week": "Week 1",
+          "topic": "Frontend Core (HTML5 & Modern CSS3)",
+          "tasks": [
+            "Learn semantic HTML tags for maximum search engine SEO structure",
+            "Master absolute flexbox alignment and responsive CSS grid setups",
+            "Configure variable theme properties using premium CSS HSL design tokens"
+          ],
+          "projects": {
+            "Job": "Deploy a premium interactive developer profile dashboard",
+            "Freelancing": "Design a gorgeous high-converting Landing Page for a local medical consultant in Figma & CSS",
+            "Build Projects": "Build a responsive retro arcade layout showcasing mini JavaScript canvas game elements"
+          },
+          "alternativeQuests": [
+            "Create a clean hover state library with micro-animations",
+            "Audit a real-world local business homepage for responsive scroll leaks"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: A premium backend is completely useless if your landing page scroll overflows on mobile screens. Learn layout alignment first!"
+        },
+        {
+          "week": "Week 2",
+          "topic": "Asynchronous JavaScript & DOM Manipulations",
+          "tasks": [
+            "Master scope layers, closures, array callbacks, and prototype structures",
+            "Learn to interact cleanly with DOM nodes using asynchronous Fetch requests",
+            "Understand promises and resolve async/await try-catch patterns"
+          ],
+          "projects": {
+            "Job": "Build an dynamic pricing calculator with client interest estimators",
+            "Freelancing": "Develop a customizable dynamic invoicing generator for clients",
+            "Build Projects": "Create a live currency tracker plotting real-time exchange visual graphs"
+          },
+          "alternativeQuests": [
+            "Implement input debounce throttling on standard key search events",
+            "Write a script that caches fetch API responses in browser sessionStorage"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Stop copying. Write code line-by-line, open browser inspector, and understand exactly where variables reside in memory!"
+        },
+        {
+          "week": "Week 3",
+          "topic": "React.js Framework & Hooks Architecture",
+          "tasks": [
+            "Understand component life-cycles, JSX renders, and prop drilling limits",
+            "Master primary useState, useEffect, and custom modular hook systems",
+            "Build high-performance controlled input fields with proper state loops"
+          ],
+          "projects": {
+            "Job": "Deploy a collaborative Kanban card manager with category filters",
+            "Freelancing": "Build an booking reservation widget that connects directly to Calendly APIs",
+            "Build Projects": "Build a responsive typing speed tester calculating WPM in real-time"
+          },
+          "alternativeQuests": [
+            "Create a dark-mode theme provider component using React Context API",
+            "Implement smooth drag-and-drop animations without using external packages"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: The useEffect dependency array is not a decoration. Understand when your component mounts and updates to prevent nasty infinite loops!"
+        },
+        {
+          "week": "Week 4",
+          "topic": "Advanced React State & Core Web Vitals Optimization",
+          "tasks": [
+            "Optimize render frames using useMemo, useCallback, and React.memo references",
+            "Configure client-side routing modules with animated page loading flags",
+            "Analyze and resolve Cumulative Layout Shift (CLS) on dynamic image loads"
+          ],
+          "projects": {
+            "Job": "Create a multi-step user register onboarding panel with validation",
+            "Freelancing": "Design a portfolio gallery with lightning-fast image compression",
+            "Build Projects": "Create an aesthetic interactive audio wave player playing local tracks"
+          },
+          "alternativeQuests": [
+            "Audit performance scores using Google Lighthouse and secure a 98+ mobile score",
+            "Build a custom lazy-loading image wrapper with blurred placeholders"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Don't over-optimize early! Write readable components first, benchmark bottlenecks, and then apply useMemo where needed."
+        },
+        {
+          "week": "Week 5",
+          "topic": "Node.js & Express.js Backend Architectures",
+          "tasks": [
+            "Understand Libuv multi-threading pools, event loops, and non-blocking I/O",
+            "Build custom express controllers handling RESTful CRUD requests",
+            "Implement centralized request logging and error handling middleware"
+          ],
+          "projects": {
+            "Job": "Create a protected student course registration API backend",
+            "Freelancing": "Build a customizable email outreach API for newsletter dispatch",
+            "Build Projects": "Build an image metadata parser server utilizing file system arrays"
+          },
+          "alternativeQuests": [
+            "Write a security middleware protecting express headers using helmet configs",
+            "Implement rate-limiting layers capping IP requests to 100 per minute"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Node's single-threaded event loop is extremely powerful, but if you perform heavy CPU calculations on the main thread, the entire server freezes!"
+        },
+        {
+          "week": "Week 6",
+          "topic": "Databases, MongoDB Schemas & Indexings",
+          "tasks": [
+            "Design normalized vs denormalized document relational formats in MongoDB",
+            "Implement Mongoose compound indexing to optimize query execution times",
+            "Write secure Mongoose pre-save hooks hashing fields automatically"
+          ],
+          "projects": {
+            "Job": "Design an e-commerce catalog DB schema with nested inventory lists",
+            "Freelancing": "Configure a dynamic landing page CMS engine writing inputs to MongoDB",
+            "Build Projects": "Build a secure note repository searching text entries with regex keys"
+          },
+          "alternativeQuests": [
+            "Write a database seeding script generating 100 fake mock documents",
+            "Analyze query efficiency using MongoDB explain plans to locate collection scans"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Indexes are like book contents. Don't query without indexes, otherwise the database has to scan every single document which kills scale!"
+        },
+        {
+          "week": "Week 7",
+          "topic": "Secure User Authentications (JWT & HttpOnly Sessions)",
+          "tasks": [
+            "Build dual-token auth systems using Short-lived Access & Long-lived Refresh tokens",
+            "Store session identifiers inside secure HttpOnly, SameSite strict cookies",
+            "Set up axios dynamic interceptors handling 401 token refresh requests"
+          ],
+          "projects": {
+            "Job": "Deploy an admin dashboard gate with role-based access control (RBAC)",
+            "Freelancing": "Build a client onboarding panel storing signed contract tokens",
+            "Build Projects": "Create a private collaborative document hub with custom access PINs"
+          },
+          "alternativeQuests": [
+            "Integrate third-party social logins safely via secure callback routes",
+            "Implement password reset flows using secure email verification tokens"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Never, ever store JWT tokens inside localStorage! It exposes your user to Cross-Site Scripting (XSS) session hijack attacks."
+        },
+        {
+          "week": "Week 8",
+          "topic": "E-Commerce Stripe & Payments Integration",
+          "tasks": [
+            "Configure Stripe payment intent APIs managing secure client checks",
+            "Build robust Express webhook routes handling completed purchase payloads",
+            "Implement automated emails sending PDF invoice templates on success"
+          ],
+          "projects": {
+            "Job": "Build a checkout cart system updating nested stock levels in database",
+            "Freelancing": "Deploy a recurring monthly subscription SaaS billing gate for clients",
+            "Build Projects": "Design an active donations portal displaying live progress goal bars"
+          },
+          "alternativeQuests": [
+            "Write unit tests verifying Stripe webhook session validation integrity",
+            "Create a dynamic cart drawer panel saving items across page reloads"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Webhook events are async. Always verify Stripe request signatures on the server before updating order statuses in the database!"
+        }
+      ]
+    },
+    "DSA": {
+      "title": "Data Structures & Algorithms (DSA)",
+      "description": "Master algorithmic problem solving, recursion, advanced data structures, and FAANG coding interviews.",
+      "baseWeeks": [
+        {
+          "week": "Week 1",
+          "topic": "Time & Space Complexity & Array Traversals",
+          "tasks": [
+            "Master Big O notation, worst-case, average-case, and amortized runtimes",
+            "Implement Two-Pointer techniques for optimal array operations",
+            "Understand Sliding Window patterns to handle subarray problems efficiently"
+          ],
+          "projects": {
+            "Job": "Solve 10 LeetCode Easy array problems using Two-Pointer and Sliding Window",
+            "Freelancing": "Build an algorithmic visualization page for clients explaining search speed differences",
+            "Build Projects": "Build a visual sliding window visualization tool with customizable parameters"
+          },
+          "alternativeQuests": [
+            "Create a clean complexity cheat sheet detailing all core datastructures",
+            "Optimize a nested loop O(N^2) algorithm to run in linear O(N) time"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Before coding, write out the brute force solution, calculate its time complexity, and then find constraints to optimize it!"
+        },
+        {
+          "week": "Week 2",
+          "topic": "Hashing Techniques & String Algorithms",
+          "tasks": [
+            "Understand hash collisions and resolve them using separate chaining",
+            "Master anagram, palindrome, and substring search patterns",
+            "Implement character frequency map algorithms in O(N) time complexity"
+          ],
+          "projects": {
+            "Job": "Solve LeetCode Mediums: Group Anagrams and Longest Substring Without Repeating Chars",
+            "Freelancing": "Create an automated client domain checker checking availability with fast hashmaps",
+            "Build Projects": "Create an interactive typographic analyzer parsing file keywords instantly"
+          },
+          "alternativeQuests": [
+            "Write a custom hashmap implementation from scratch using JS arrays",
+            "Optimize a search feature to leverage O(1) lookups instead of O(N) loop scans"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: When you need to count frequencies or find duplicates, your absolute best friend is a Hash Map. It turns O(N^2) checks into O(N)!"
+        },
+        {
+          "week": "Week 3",
+          "topic": "Recursion & Backtracking Fundamentals",
+          "tasks": [
+            "Understand recursive call stacks, base cases, and stack overflow errors",
+            "Implement classic subset generation and permutation patterns",
+            "Solve standard backtracking challenges using decision trees"
+          ],
+          "projects": {
+            "Job": "Solve classic N-Queens, Sudoku Solver, and Permutations on LeetCode",
+            "Freelancing": "Develop an automated task schedule builder testing all path combinations",
+            "Build Projects": "Build a visual Maze Generator & Solver illustrating recursive backtracking"
+          },
+          "alternativeQuests": [
+            "Draw a complete recursion call stack tree on paper for a Fibonacci sequence",
+            "Write a recursive utility function deep-cloning complex nested objects"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Recursion is simple: find the base case, solve the smallest subproblem, and trust the recursive leap. Always draw the tree on paper!"
+        },
+        {
+          "week": "Week 4",
+          "topic": "Linked Lists & Fast/Slow Pointer Strategies",
+          "tasks": [
+            "Implement Singly and Doubly Linked Lists and node structures",
+            "Master Floyd's Cycle Detection algorithm (Tortoise & Hare)",
+            "Practice in-place reversal of singly linked list structures"
+          ],
+          "projects": {
+            "Job": "Solve LeetCode: Reverse Linked List and Linked List Cycle II",
+            "Freelancing": "Design a client change-history logging system using list structures",
+            "Build Projects": "Build an interactive visualizer illustrating linked list insertions & removals"
+          },
+          "alternativeQuests": [
+            "Implement a stack using a Linked List structure under the hood",
+            "Reverse a linked list iteratively and recursively, comparing call stack usage"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Linked lists are all about pointer references. Draw nodes as boxes on paper, draw arrows, and update references step-by-step!"
+        },
+        {
+          "week": "Week 5",
+          "topic": "Stacks, Queues & Monotonic Patterns",
+          "tasks": [
+            "Understand LIFO/FIFO mechanics using basic array implementations",
+            "Master Balanced Parentheses parsing patterns using stack buffers",
+            "Implement Monotonic Stack patterns for next greater element challenges"
+          ],
+          "projects": {
+            "Job": "Solve LeetCode: Valid Parentheses, Min Stack, and Next Greater Element",
+            "Freelancing": "Create an automated queue dispatcher managing client task priority orders",
+            "Build Projects": "Build an interactive expression solver converting standard formulas to postfix"
+          },
+          "alternativeQuests": [
+            "Implement a queue using two stacks and analyze its amortized time efficiency",
+            "Write a real-time event logging queue that processes up to 10 events asynchronously"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Whenever a problem asks you to check matched pairs (like HTML tags or brackets) or search for nearest values, think Stack!"
+        },
+        {
+          "week": "Week 6",
+          "topic": "Trees & Breadth-First / Depth-First Traversals",
+          "tasks": [
+            "Implement Binary Search Tree structures with search, insert, and delete",
+            "Master Pre-order, In-order, and Post-order recursive DFS traversals",
+            "Implement Level-Order traversal using BFS and double-ended queues"
+          ],
+          "projects": {
+            "Job": "Solve LeetCode: Maximum Depth of Binary Tree and Binary Tree Level Order Traversal",
+            "Freelancing": "Build an interactive organizational chart tree builder for client company setups",
+            "Build Projects": "Build a visual Binary Search Tree sandbox illustrating real-time inserts/searches"
+          },
+          "alternativeQuests": [
+            "Find the lowest common ancestor of two nodes inside a binary tree structure",
+            "Write a function checking if a binary tree is perfectly balanced or symmetrical"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Recursion rules tree traversals. Level-order BFS uses a queue, while deep DFS uses a stack. Never confuse the two!"
+        },
+        {
+          "week": "Week 7",
+          "topic": "Graphs, BFS, DFS & Shortest Path Algorithms",
+          "tasks": [
+            "Represent graphs using adjacency lists and matrix formats",
+            "Implement Graph DFS/BFS traversals managing cycle visited sets",
+            "Understand Dijkstra's algorithm for shortest paths in weighted graphs"
+          ],
+          "projects": {
+            "Job": "Solve LeetCode: Number of Islands, Clone Graph, and Course Schedule",
+            "Freelancing": "Create a delivery cost estimator network mapping coordinate hops",
+            "Build Projects": "Build an interactive visual pathfinder finding shortest paths around maze barriers"
+          },
+          "alternativeQuests": [
+            "Detect a cycle in a directed graph using Kahn's topological sort algorithm",
+            "Implement Kruskal's algorithm to calculate the Minimum Spanning Tree of a network"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Graphs model real-world relationships. Master adjacency list representations first, as they are used in 95% of graph interview questions!"
+        },
+        {
+          "week": "Week 8",
+          "topic": "Dynamic Programming (DP) & Memoization",
+          "tasks": [
+            "Understand overlapping subproblems and optimal substructures",
+            "Master Top-Down Memoization using recursion and result cache maps",
+            "Master Bottom-Up Tabulation using DP arrays and iterative loops"
+          ],
+          "projects": {
+            "Job": "Solve LeetCode: Climbing Stairs, Coin Change, and Longest Common Subsequence",
+            "Freelancing": "Deploy an automated budget optimizer maximizing client project choices",
+            "Build Projects": "Build a knapsack problem sandbox visualizer showing DP matrix fills"
+          },
+          "alternativeQuests": [
+            "Optimize a recursive Fibonacci algorithm from O(2^N) to O(N) using a simple cache",
+            "Solve the classic LeetCode House Robber problem using both memoization and tabulation"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Don't panic when you hear DP. It's just recursion with a dictionary to save computed results so you don't solve the same thing twice!"
+        }
+      ]
+    },
+    "GenAI": {
+      "title": "Generative AI (GenAI) & LLM Engineering",
+      "description": "Master LLM API configurations, Retrieval-Augmented Generation (RAG), vector embeddings, agentic loops, and scaling AI apps.",
+      "baseWeeks": [
+        {
+          "week": "Week 1",
+          "topic": "Foundations of LLMs & Advanced Prompt Engineering",
+          "tasks": [
+            "Understand Transformer architectures, tokens, attention, and weights",
+            "Master Zero-shot, Few-shot, and Chain-of-Thought prompt configurations",
+            "Implement prompt guardrails preventing injection attacks"
+          ],
+          "projects": {
+            "Job": "Build an automated code auditor parsing security gaps in files via prompt sheets",
+            "Freelancing": "Develop a high-converting cold email template builder optimized for sales copy",
+            "Build Projects": "Create an interactive role-playing AI chat advisor with persistent personalities"
+          },
+          "alternativeQuests": [
+            "Build a tool counting token expenses using OpenAI tiktoken parser libraries",
+            "Implement prompt templates utilizing secure HSL layout variables"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Generative AI is all about prompt precision. Think of the LLM as a highly capable junior engineer: give clear context, constraints, and examples!"
+        },
+        {
+          "week": "Week 2",
+          "topic": "AI APIs Integration & Stream Responses",
+          "tasks": [
+            "Connect express backend routes to secure OpenAI / Anthropic SDK endpoints",
+            "Configure temperature, top_p, and frequency penalty variables",
+            "Implement real-time streamed text responses using Server-Sent Events (SSE)"
+          ],
+          "projects": {
+            "Job": "Deploy an AI coding sandbox streaming bug fixes live to the editor screen",
+            "Freelancing": "Create an automated content copy generator for social media agency feeds",
+            "Build Projects": "Build a real-time creative storyteller streaming fictional paragraphs as users type"
+          },
+          "alternativeQuests": [
+            "Write a robust retry system handling rate-limit API failures with exponential backoff",
+            "Create a clean frontend loading progress indicator keeping chat UI fully non-blocking"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Server response times for GenAI can exceed 5 seconds. Always stream your completions to keep the user experience responsive and lag-free!"
+        },
+        {
+          "week": "Week 3",
+          "topic": "Semantic Search & Vector Embeddings",
+          "tasks": [
+            "Convert text strings into numerical high-dimensional vector representations",
+            "Master mathematical distance formulas (Cosine Similarity, Euclidean Distance)",
+            "Query vector vectors dynamically within local arrays or memory tables"
+          ],
+          "projects": {
+            "Job": "Build a dynamic duplicate-ticket finder searching issue backlogs semantically",
+            "Freelancing": "Design an automated FAQ responder answering questions from clients",
+            "Build Projects": "Build a semantic search engine matching user queries to book quotes"
+          },
+          "alternativeQuests": [
+            "Compare search speeds of exact string match vs vector cosine searches",
+            "Create an interactive visual canvas plotting words based on semantic distance"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Vector embeddings translate human meanings into mathematical numbers. Similar concepts will sit close together in vector space!"
+        },
+        {
+          "week": "Week 4",
+          "topic": "Retrieval-Augmented Generation (RAG) & Vector Databases",
+          "tasks": [
+            "Set up Pinecone, ChromaDB, or pgvector cloud databases",
+            "Implement dynamic document chunking strategies (Overlapping, semantic splittings)",
+            "Build complete RAG routes retrieving verified documents to ground LLM responses"
+          ],
+          "projects": {
+            "Job": "Build a secure corporate document parser querying internal SOP guidelines",
+            "Freelancing": "Develop a custom customer-support chatbot trained on a client's website documentation",
+            "Build Projects": "Create an interactive academic study assistant summarizing notes from textbooks"
+          },
+          "alternativeQuests": [
+            "Implement a cache layer storing semantic queries to reduce vector DB API bills",
+            "Build an automated data scraper chunking HTML websites into format vectors"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: LLMs hallucinate when they lack real-time context. RAG solves this: fetch relevant pages first, and force the LLM to ground its answer there!"
+        },
+        {
+          "week": "Week 5",
+          "topic": "Autonomous AI Agents & Tool Calling Pipelines",
+          "tasks": [
+            "Understand agentic workflow loops: Action, Observation, Reflection",
+            "Configure function-calling schemas exposing local APIs to LLMs",
+            "Build state management modules controlling recursive agent execution limits"
+          ],
+          "projects": {
+            "Job": "Deploy an AI SQL Analyst executing database queries safely based on client voice files",
+            "Freelancing": "Build an automated CRM assistant updating customer statuses from email parsing",
+            "Build Projects": "Build a multi-agent research reporter compiling full-length summaries from search APIs"
+          },
+          "alternativeQuests": [
+            "Implement a circuit-breaker stopping recursive loops if the agent exceeds 5 cycles",
+            "Write standard unit tests verifying function-call argument validations"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: AI Agents can call custom tools! Expose your backend APIs as tools, and let the LLM decide which one to run to solve a complex goal."
+        },
+        {
+          "week": "Week 6",
+          "topic": "AI Frameworks: LangChain & LlamaIndex",
+          "tasks": [
+            "Master LangChain chains, memory buffers, and prompt templates",
+            "Configure complex data ingestion pipelines utilizing LlamaIndex connectors",
+            "Build stateful conversation logs maintaining dynamic chat memories"
+          ],
+          "projects": {
+            "Job": "Build a complex multi-file codebase reviewer analyzing code folders",
+            "Freelancing": "Create an automated CRM intake funnel qualifying and scoring leads",
+            "Build Projects": "Deploy a multi-room debate simulator where multiple AI agents argue topics"
+          },
+          "alternativeQuests": [
+            "Optimize memory usage by utilizing window buffers storing only the last 5 turns",
+            "Implement custom data loader components processing raw CSV tables into RAG engines"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Frameworks like LangChain simplify setup, but don't treat them as black boxes. Understand under-the-hood API calls so you can debug them!"
+        },
+        {
+          "week": "Week 7",
+          "topic": "Fine-Tuning, LoRA & Model Evaluations",
+          "tasks": [
+            "Understand structural differences: RAG vs fine-tuning adapted weights",
+            "Create formatted JSONL training datasets for specialized API tuning",
+            "Evaluate LLM output accuracy using benchmarks and LLM-as-a-judge"
+          ],
+          "projects": {
+            "Job": "Prepare a fine-tuned model executing exact system-architect design logs",
+            "Freelancing": "Develop a fine-tuned copywriter model speaking in a client's brand voice",
+            "Build Projects": "Train an AI coding assistant outputting syntactically perfect CSS variables"
+          },
+          "alternativeQuests": [
+            "Write a script checking training data for syntax anomalies or empty keys",
+            "Compare completions of fine-tuned engines against standard zero-shot models"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Fine-tuning modifies model weights to adapt tone and style. RAG imports factual knowledge. For 90% of business apps, RAG is what you need first!"
+        },
+        {
+          "week": "Week 8",
+          "topic": "Deploying & Scaling Generative AI Systems",
+          "tasks": [
+            "Set up token caching, prompt compression, and load balancing configurations",
+            "Manage rate limiting and API bill management safeguards in production",
+            "Deploy secure, fully authenticated GenAI platforms live to CDNs"
+          ],
+          "projects": {
+            "Job": "Deploy a high-scale chat assistant supporting authenticated student users",
+            "Freelancing": "Hand over a secure, self-hosted corporate AI tool under client domains",
+            "Build Projects": "Launch an AI SaaS generator integrating dynamic billing gateways"
+          },
+          "alternativeQuests": [
+            "Implement custom analytics monitors recording token usage per user query",
+            "Write integration tests simulating multi-client concurrent streaming payloads"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: API calls to OpenAI or Anthropic get expensive fast. Implement database caching for common requests to protect your wallet!"
+        }
+      ]
+    }
+  },
+  "globalTips": [
+    "Adfar's Pro Tip: Solve the problem on paper first. If you can explain it to a 10-year-old child, you can code it easily!",
+    "Adfar's Pro Tip: Focus heavily on hands-on building. Building 1 real-world landing page is better than watching 50 hours of theoretical video courses!",
+    "Adfar's Pro Tip: Write clean code, maintain structured indentations, and document your Git commits. Bad habits early lead to broken servers later!",
+    "Adfar's Pro Tip: A premium software engineer is a problem solver first. Technology is just a tool; understand the core business problem you are solving!",
+    "Adfar's Pro Tip: Don't compare your Chapter 1 to someone else's Chapter 20. Consistent daily execution is what builds masters!"
+  ],
+  "extraAdvancedWeeks": [
+    {
+      "week": "Week 9",
+      "topic": "System Design, Load Balancing & High Scale",
+      "tasks": [
+        "Master horizontal scaling, load balancing algorithms, and reverse proxies",
+        "Implement high-performance distributed queues using RabbitMQ or BullMQ",
+        "Benchmark caching layer hits utilizing clustered Redis nodes"
+      ],
+      "projects": {
+        "Job": "Architect a multi-region highly available microservices gateway",
+        "Freelancing": "Deliver a complete scaling consultation blueprint detailing client server bottlenecks",
+        "Build Projects": "Build a custom reverse proxy in Node balancing concurrent workloads"
+      },
+      "alternativeQuests": [
+        "Dockerize container stacks and deploy automated Kubernetes nodes",
+        "Measure latency overhead of multiple gateway hops using tracing headers"
+      ],
+      "adfarTip": "Adfar Sir's Pro Tip: Real scale means designing for failure. If your database crashes, does your user get a clean placeholder page or a raw crash error? Plan for failure!"
+    },
+    {
+      "week": "Week 10",
+      "topic": "Microservices, gRPC & Observability",
+      "tasks": [
+        "Migrate monolith routes into secure containerized microservices",
+        "Implement ultra-fast internal communication protocols using gRPC and Protocol Buffers",
+        "Configure OpenTelemetry tracing with Prometheus and Grafana dashboards"
+      ],
+      "projects": {
+        "Job": "Deploy containerized services auto-scaling under peak user loads",
+        "Freelancing": "Audit enterprise systems and configure automated performance metrics alerts",
+        "Build Projects": "Build a distributed chat service broadcasting updates across isolated servers"
+      },
+      "alternativeQuests": [
+        "Write custom protobuf schemas defining secure student verification payloads",
+        "Optimize memory allocations in microservices to reduce cold start boot times"
+      ],
+      "adfarTip": "Adfar Sir's Pro Tip: Microservices introduce complexity. Don't build microservices unless your team size or scaling needs absolutely demand them. A robust monolith is highly underrated!"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ import {
   ChevronRight,
   Shield,
   PhoneCall,
+  Settings,
 } from "lucide-react";
 
 const links = [
@@ -28,6 +29,7 @@ const links = [
   { href: "/admin/announcements", icon: Bell, label: "Announcements" },
   { href: "/admin/students", icon: Users, label: "Students" },
   { href: "/admin/leads", icon: PhoneCall, label: "Leads" },
+  { href: "/admin/settings", icon: Settings, label: "Settings" },
 ];
 
 export default function AdminSidebar({ user }) {

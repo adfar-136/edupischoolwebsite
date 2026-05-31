@@ -111,7 +111,7 @@ const STATS = [
 async function getPageData() {
   try {
     const { db } = await import("@/lib/mongodb");
-    const [batches, masterclasses] = await Promise.all([
+    const [batches, masterclasses, settingsDoc] = await Promise.all([
       db.collection("batches").find({ status: "active" }).limit(3).toArray(),
       db
         .collection("masterclasses")
@@ -119,6 +119,7 @@ async function getPageData() {
         .sort({ scheduledAt: 1 })
         .limit(3)
         .toArray(),
+      db.collection("settings").findOne({ key: "socials" }),
     ]);
     return {
       batches: batches.map((b) => ({ ...b, _id: b._id.toString() })),
@@ -127,9 +128,14 @@ async function getPageData() {
         _id: m._id.toString(),
         scheduledAt: m.scheduledAt?.toISOString(),
       })),
+      settings: settingsDoc || { instagram: "", linkedin: "", youtube: "", twitter: "", customLinks: [] },
     };
   } catch {
-    return { batches: [], masterclasses: [] };
+    return { 
+      batches: [], 
+      masterclasses: [], 
+      settings: { instagram: "", linkedin: "", youtube: "", twitter: "", customLinks: [] } 
+    };
   }
 }
 
@@ -138,20 +144,22 @@ const FALLBACK_BATCHES = [
     _id: "fsd",
     title: "Full Stack Development",
     slug: "full-stack-development",
+    description: "Master React, Next.js, Node.js, Express, and MongoDB. Build real production web apps.",
+    price: 3999,
+    duration: "16 Weeks",
+    lessonsCount: 48,
     category: "FSD",
-    description: "Master React, Next.js, Node.js, MongoDB, and modern deployment. Build real production apps from scratch.",
-    fees: 8000,
-    duration: 8,
     status: "active",
   },
   {
     _id: "dsa",
-    title: "Data Structures & Algorithms",
-    slug: "data-structures-algorithms",
+    title: "DSA & Coding Interview Guide",
+    slug: "dsa-interview-guide",
+    description: "Learn essential Data Structures, Algorithms, and interview patterns to land your job.",
+    price: 3000,
+    duration: "12 Weeks",
+    lessonsCount: 36,
     category: "DSA",
-    description: "Master DSA with real-world intuition. From arrays and trees to DP and graphs — with actual interview prep.",
-    fees: 3000,
-    duration: 5,
     status: "active",
   },
 ];
@@ -163,7 +171,7 @@ const CATEGORY_COLORS = {
 };
 
 export default async function HomePage() {
-  const { batches: dbBatches, masterclasses } = await getPageData();
+  const { batches: dbBatches, masterclasses, settings } = await getPageData();
   const batches = dbBatches.length > 0 ? dbBatches : FALLBACK_BATCHES;
 
   const upcomingBatch = batches.find((b) => {
@@ -954,6 +962,179 @@ export default async function HomePage() {
             >
               ₹199 Masterclasses
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SOCIAL MEDIA HUB ── */}
+      <section className="section" style={{ background: "var(--color-cream-dark)", padding: "80px 0" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+            <span className="badge badge-saffron" style={{ marginBottom: "16px", display: "inline-block" }}>Community &amp; Socials</span>
+            <h2 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "var(--color-charcoal)", marginBottom: "12px" }}>
+              Connect Beyond the Classroom
+            </h2>
+            <p style={{ color: "var(--color-muted)", fontSize: "16px", maxWidth: "600px", margin: "0 auto" }}>
+              Join my active learning communities, check out my latest code tutorials, and stay updated with live cohorts!
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "24px" }}>
+            {/* YouTube Card */}
+            {settings?.youtube && (
+              <a 
+                href={settings.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card"
+                style={{
+                  padding: "32px",
+                  background: "white",
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  border: "1.5px solid var(--color-cream-dark)",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 4px 20px rgba(28,28,28,0.02)"
+                }}
+              >
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(255,0,0,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "32px", marginBottom: "20px" }}>
+                  📺
+                </div>
+                <h4 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)", margin: "0 0 8px" }}>YouTube Channel</h4>
+                <p style={{ fontSize: "13.5px", color: "var(--color-muted)", margin: "0 0 16px" }}>Subscribe for deep-dives in MERN stacks, system designs, and tech career guides.</p>
+                <span style={{ color: "var(--color-forest)", fontWeight: 700, fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
+                  Subscribe Now <ArrowRight size={14} />
+                </span>
+              </a>
+            )}
+
+            {/* LinkedIn Card */}
+            {settings?.linkedin && (
+              <a 
+                href={settings.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card"
+                style={{
+                  padding: "32px",
+                  background: "white",
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  border: "1.5px solid var(--color-cream-dark)",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 4px 20px rgba(28,28,28,0.02)"
+                }}
+              >
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(10,102,194,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "32px", marginBottom: "20px" }}>
+                  💼
+                </div>
+                <h4 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)", margin: "0 0 8px" }}>LinkedIn Network</h4>
+                <p style={{ fontSize: "13.5px", color: "var(--color-muted)", margin: "0 0 16px" }}>Connect with me for developer networking, tech insights, and cohort launches.</p>
+                <span style={{ color: "var(--color-forest)", fontWeight: 700, fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
+                  Connect Roster <ArrowRight size={14} />
+                </span>
+              </a>
+            )}
+
+            {/* Instagram Card */}
+            {settings?.instagram && (
+              <a 
+                href={settings.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card"
+                style={{
+                  padding: "32px",
+                  background: "white",
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  border: "1.5px solid var(--color-cream-dark)",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 4px 20px rgba(28,28,28,0.02)"
+                }}
+              >
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(225,48,108,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "32px", marginBottom: "20px" }}>
+                  📸
+                </div>
+                <h4 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)", margin: "0 0 8px" }}>Instagram Reels</h4>
+                <p style={{ fontSize: "13.5px", color: "var(--color-muted)", margin: "0 0 16px" }}>Check out coding reels, daily tech setups, and behind-the-scenes in Kashmir.</p>
+                <span style={{ color: "var(--color-forest)", fontWeight: 700, fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
+                  Follow Reels <ArrowRight size={14} />
+                </span>
+              </a>
+            )}
+
+            {/* Twitter Card */}
+            {settings?.twitter && (
+              <a 
+                href={settings.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card"
+                style={{
+                  padding: "32px",
+                  background: "white",
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  border: "1.5px solid var(--color-cream-dark)",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 4px 20px rgba(28,28,28,0.02)"
+                }}
+              >
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(29,161,242,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "32px", marginBottom: "20px" }}>
+                  🐦
+                </div>
+                <h4 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)", margin: "0 0 8px" }}>Twitter / X</h4>
+                <p style={{ fontSize: "13.5px", color: "var(--color-muted)", margin: "0 0 16px" }}>Read developer threads, open-source thoughts, and prompt-engineering tips.</p>
+                <span style={{ color: "var(--color-forest)", fontWeight: 700, fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
+                  Follow Feed <ArrowRight size={14} />
+                </span>
+              </a>
+            )}
+
+            {/* Render any Custom Link sections dynamically! */}
+            {settings?.customLinks && settings.customLinks.map((item, idx) => (
+              <a 
+                key={idx}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card"
+                style={{
+                  padding: "32px",
+                  background: "white",
+                  textDecoration: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                  border: "1.5px solid var(--color-cream-dark)",
+                  transition: "all 0.3s ease",
+                  boxShadow: "0 4px 20px rgba(28,28,28,0.02)"
+                }}
+              >
+                <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(45,106,79,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "32px", marginBottom: "20px" }}>
+                  {item.icon || "🔗"}
+                </div>
+                <h4 style={{ fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)", margin: "0 0 8px" }}>{item.title}</h4>
+                <p style={{ fontSize: "13.5px", color: "var(--color-muted)", margin: "0 0 16px" }}>Explore this custom directory page and resource link launched by Adfar.</p>
+                <span style={{ color: "var(--color-forest)", fontWeight: 700, fontSize: "14px", display: "flex", alignItems: "center", gap: "4px" }}>
+                  Visit Resource <ArrowRight size={14} />
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

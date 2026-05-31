@@ -64,7 +64,7 @@ export default async function DashboardPage() {
   const now = new Date();
 
   return (
-    <div style={{ padding: "32px 40px" }}>
+    <div className="dashboard-container">
       {/* Header */}
       <div style={{ marginBottom: "36px" }}>
         <h1
@@ -84,7 +84,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px", marginBottom: "36px" }}>
+      <div className="stats-grid-responsive">
         {[
           { label: "Enrolled Batches", value: enrollments.length, icon: BookOpen, color: "var(--color-saffron)" },
           { label: "Booked Masterclasses", value: masterclasses.length, icon: Calendar, color: "var(--color-forest)" },
@@ -120,7 +120,7 @@ export default async function DashboardPage() {
         ))}
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: "24px" }}>
+      <div className="dashboard-split-grid">
         {/* Left: Enrolled Batches */}
         <div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "20px" }}>

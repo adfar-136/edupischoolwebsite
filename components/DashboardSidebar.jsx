@@ -13,12 +13,14 @@ import {
   LogOut,
   ChevronRight,
   Shield,
+  Award,
 } from "lucide-react";
 
 const links = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Overview" },
   { href: "/dashboard/batches", icon: BookOpen, label: "My Batches" },
   { href: "/dashboard/masterclasses", icon: Calendar, label: "Masterclasses" },
+  { href: "/dashboard/certificates", icon: Award, label: "My Certificates" },
   { href: "/dashboard/announcements", icon: Bell, label: "Announcements" },
 ];
 

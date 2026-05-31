@@ -117,8 +117,8 @@ export default async function MasterclassesPage() {
               </h3>
               <p style={{ color: "var(--color-muted)", fontSize: "15px" }}>
                 New masterclasses are announced frequently. Check back soon or follow{" "}
-                <a href="https://instagram.com/adfarrasheed" style={{ color: "var(--color-saffron-dark)", textDecoration: "none" }}>
-                  @adfarrasheed
+                <a href="https://www.instagram.com/adfarsirofficial?igsh=ZGU2ZDVlOXlqbDdx&utm_source=qr" style={{ color: "var(--color-saffron-dark)", textDecoration: "none" }}>
+                  @adfarsirofficial
                 </a>{" "}
                 for announcements.
               </p>

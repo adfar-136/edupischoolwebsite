@@ -47,7 +47,7 @@ export default async function DashboardBatchesPage() {
   const batches = await getEnrolledBatches(session.user.id);
 
   return (
-    <div style={{ padding: "32px 40px" }}>
+    <div className="dashboard-container">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "32px" }}>
         <div>
           <h1 style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 700, color: "var(--color-charcoal)", marginBottom: "6px" }}>
@@ -74,7 +74,7 @@ export default async function DashboardBatchesPage() {
           </Link>
         </div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: "24px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "24px" }}>
           {batches.map((batch) => {
             const pct = batch.total ? Math.round((batch.completed / batch.total) * 100) : 0;
             const catBar = CATEGORY_BAR[batch.category] || CATEGORY_BAR["FSD"];

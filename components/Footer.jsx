@@ -67,10 +67,10 @@ export default function Footer() {
             </p>
             <div style={{ display: "flex", gap: "12px" }}>
               {[
-                { icon: YoutubeIcon, href: "https://youtube.com/@adfarrasheed", label: "YouTube" },
-                { icon: LinkedinIcon, href: "https://linkedin.com/in/adfarrasheed", label: "LinkedIn" },
+                { icon: YoutubeIcon, href: "https://www.youtube.com/@adfar-rasheed", label: "YouTube" },
+                { icon: LinkedinIcon, href: "https://www.linkedin.com/in/adfar-rasheed/", label: "LinkedIn" },
                 { icon: TwitterIcon, href: "https://twitter.com/adfarrasheed", label: "Twitter" },
-                { icon: InstagramIcon, href: "https://instagram.com/adfarrasheed", label: "Instagram" },
+                { icon: InstagramIcon, href: "https://www.instagram.com/adfarsirofficial?igsh=ZGU2ZDVlOXlqbDdx&utm_source=qr", label: "Instagram" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}

@@ -442,7 +442,7 @@ export default function BatchLecturePage() {
   }
 
   return (
-    <div style={{ padding: "32px 40px", maxWidth: "900px" }}>
+    <div className="dashboard-container" style={{ maxWidth: "900px" }}>
       {/* Header */}
       <div style={{ marginBottom: "32px" }}>
         <Link href="/dashboard" style={{ fontSize: "13px", color: "var(--color-muted)", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "4px", marginBottom: "16px" }}>

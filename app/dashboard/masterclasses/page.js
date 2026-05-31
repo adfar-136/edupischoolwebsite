@@ -29,7 +29,7 @@ export default async function DashboardMasterclassesPage() {
   const past = masterclasses.filter((m) => new Date(m.scheduledAt) < now);
 
   return (
-    <div style={{ padding: "32px 40px" }}>
+    <div className="dashboard-container">
       <div style={{ marginBottom: "32px" }}>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 700, color: "var(--color-charcoal)", marginBottom: "6px" }}>
           My Masterclasses
@@ -55,7 +55,7 @@ export default async function DashboardMasterclassesPage() {
           {upcoming.length > 0 && (
             <div style={{ marginBottom: "32px" }}>
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 700, marginBottom: "16px" }}>Upcoming</h2>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "16px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "16px" }}>
                 {upcoming.map((mc) => <MasterclassCard key={mc._id} mc={mc} now={now} />)}
               </div>
             </div>
@@ -63,7 +63,7 @@ export default async function DashboardMasterclassesPage() {
           {past.length > 0 && (
             <div>
               <h2 style={{ fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 700, marginBottom: "16px" }}>Past Sessions</h2>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "16px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "16px" }}>
                 {past.map((mc) => <MasterclassCard key={mc._id} mc={mc} now={now} />)}
               </div>
             </div>

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import AdminSidebar from "@/components/AdminSidebar";
+import AdminLayoutClient from "@/components/AdminLayoutClient";
 
 export default async function AdminLayout({ children }) {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -15,11 +15,8 @@ export default async function AdminLayout({ children }) {
   }
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", background: "#F1F0EC" }}>
-      <AdminSidebar user={session.user} />
-      <main style={{ flex: 1, minWidth: 0, overflow: "auto" }}>
-        {children}
-      </main>
-    </div>
+    <AdminLayoutClient user={session.user}>
+      {children}
+    </AdminLayoutClient>
   );
 }

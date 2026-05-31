@@ -48,7 +48,7 @@ export default async function DashboardAnnouncementsPage() {
   const rest = announcements.filter((a) => !a.isPinned);
 
   return (
-    <div style={{ padding: "32px 40px" }}>
+    <div className="dashboard-container">
       <div style={{ marginBottom: "32px" }}>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 700, color: "var(--color-charcoal)", marginBottom: "6px" }}>
           Announcements

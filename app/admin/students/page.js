@@ -12,7 +12,8 @@ import {
   GraduationCap, 
   TrendingUp,
   BarChart3,
-  CheckCircle2
+  CheckCircle2,
+  Award
 } from "lucide-react";
 
 export default function AdminStudentsPage() {
@@ -29,15 +30,79 @@ export default function AdminStudentsPage() {
   const [selectedDashboardItem, setSelectedDashboardItem] = useState(null);
   const [dashboardSearch, setDashboardSearch] = useState("");
 
+  // Certificate system state
+  const [certificates, setCertificates] = useState([]);
+  const [actingCert, setActingCert] = useState(null);
+  const [certMessage, setCertMessage] = useState(null);
+
   const fetchData = async () => {
     const res = await fetch("/api/admin/students");
     const json = await res.json();
     setData(json);
+
+    try {
+      const certRes = await fetch("/api/admin/certificates");
+      if (certRes.ok) {
+        const certData = await certRes.json();
+        setCertificates(certData.certificates || []);
+      }
+    } catch (e) {
+      console.error("Failed to load certificates in admin:", e);
+    }
+    
     setLoading(false);
     
     // Auto-select first batch as default dashboard item once loaded
     if (json.batches?.length > 0 && !selectedDashboardItem) {
       setSelectedDashboardItem({ type: "batch", ...json.batches[0] });
+    }
+  };
+
+  const handleIssueCertificate = async (userId, masterclassId) => {
+    setActingCert(userId);
+    setCertMessage(null);
+    try {
+      const res = await fetch("/api/admin/certificates", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, masterclassId }),
+      });
+      const result = await res.json();
+      if (!res.ok) {
+        setCertMessage({ type: "error", text: result.error || "Failed to issue certificate" });
+      } else {
+        setCertMessage({ type: "success", text: "Certificate issued successfully!" });
+        await fetchData();
+      }
+    } catch (e) {
+      console.error(e);
+      setCertMessage({ type: "error", text: "Connection error. Failed to issue certificate." });
+    } finally {
+      setActingCert(null);
+    }
+  };
+
+  const handleRevokeCertificate = async (certificateId) => {
+    setActingCert(certificateId);
+    setCertMessage(null);
+    try {
+      const res = await fetch("/api/admin/certificates", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ certificateId }),
+      });
+      const result = await res.json();
+      if (!res.ok) {
+        setCertMessage({ type: "error", text: result.error || "Failed to revoke certificate" });
+      } else {
+        setCertMessage({ type: "success", text: "Certificate revoked successfully." });
+        await fetchData();
+      }
+    } catch (e) {
+      console.error(e);
+      setCertMessage({ type: "error", text: "Connection error. Failed to revoke certificate." });
+    } finally {
+      setActingCert(null);
     }
   };
 
@@ -115,7 +180,7 @@ export default function AdminStudentsPage() {
   );
 
   return (
-    <div style={{ padding: "32px 40px" }}>
+    <div className="dashboard-container">
       {/* Title & Total Statistics Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "28px", flexWrap: "wrap", gap: "16px" }}>
         <div>
@@ -214,7 +279,7 @@ export default function AdminStudentsPage() {
               </div>
 
               {/* Main Dashboard Layout */}
-              <div style={{ display: "grid", gridTemplateColumns: "340px 1fr", gap: "24px", alignItems: "start" }}>
+              <div className="admin-split-grid">
                 {/* Left Panel: Batches & Masterclasses Cards */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
                   <div>
@@ -355,6 +420,31 @@ export default function AdminStudentsPage() {
                         </button>
                       </div>
 
+                      {certMessage && (
+                        <div
+                          style={{
+                            padding: "12px 16px",
+                            background: certMessage.type === "success" ? "rgba(45,106,79,0.08)" : "rgba(220,38,38,0.08)",
+                            border: `1px solid ${certMessage.type === "success" ? "rgba(45,106,79,0.2)" : "rgba(220,38,38,0.2)"}`,
+                            color: certMessage.type === "success" ? "var(--color-forest-dark)" : "#B91C1C",
+                            borderRadius: "8px",
+                            marginBottom: "20px",
+                            fontSize: "13px",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center"
+                          }}
+                        >
+                          <span>{certMessage.text}</span>
+                          <button
+                            onClick={() => setCertMessage(null)}
+                            style={{ background: "none", border: "none", color: "inherit", cursor: "pointer", fontSize: "11px", fontWeight: "bold" }}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                      )}
+
                       {/* Summary Cards */}
                       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "28px" }}>
                         <div style={{ background: "var(--color-cream)", borderRadius: "12px", padding: "16px", border: "1.5px solid var(--color-cream-dark)" }}>
@@ -398,13 +488,14 @@ export default function AdminStudentsPage() {
                             </p>
                           </div>
                         ) : (
-                          <div style={{ maxHeight: "400px", overflowY: "auto", border: "1.5px solid var(--color-cream-dark)", borderRadius: "12px" }}>
+                          <div className="data-table-wrapper" style={{ maxHeight: "400px", overflowY: "auto" }}>
                             <table className="data-table" style={{ width: "100%" }}>
                               <thead>
                                 <tr>
                                   <th>Student Details</th>
                                   <th>Status</th>
                                   <th>Enrolled Date</th>
+                                  {selectedDashboardItem?.type === "masterclass" && <th>Certificate</th>}
                                 </tr>
                               </thead>
                               <tbody>
@@ -429,6 +520,70 @@ export default function AdminStudentsPage() {
                                     <td style={{ fontSize: "11.5px", color: "var(--color-muted)" }}>
                                       {s.createdAt ? new Date(s.createdAt).toLocaleDateString("en-IN", { month: "short", day: "numeric", year: "numeric" }) : "—"}
                                     </td>
+                                    {selectedDashboardItem?.type === "masterclass" && (
+                                      <td>
+                                        {(() => {
+                                          const cert = certificates.find(
+                                            (c) => c.userId === s._id && (c.courseId === selectedDashboardItem._id || c.courseId?.toString() === selectedDashboardItem._id)
+                                          );
+                                          if (cert) {
+                                            return (
+                                              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                                                <span style={{ fontSize: "11px", fontWeight: 700, color: "var(--color-forest-dark)", display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                                                  <Award size={12} style={{ color: "var(--color-forest)" }} /> Issued
+                                                </span>
+                                                <button
+                                                  onClick={() => handleRevokeCertificate(cert.certificateId)}
+                                                  disabled={actingCert === cert.certificateId}
+                                                  style={{
+                                                    background: "none",
+                                                    border: "none",
+                                                    color: "#DC2626",
+                                                    fontSize: "10px",
+                                                    fontWeight: 600,
+                                                    cursor: "pointer",
+                                                    padding: "2px 4px",
+                                                    textDecoration: "underline"
+                                                  }}
+                                                >
+                                                  {actingCert === cert.certificateId ? "Revoking..." : "Revoke"}
+                                                </button>
+                                              </div>
+                                            );
+                                          }
+                                          return (
+                                            <button
+                                              onClick={() => handleIssueCertificate(s._id, selectedDashboardItem._id)}
+                                              disabled={actingCert === s._id}
+                                              style={{
+                                                padding: "4px 10px",
+                                                background: "rgba(244, 169, 66, 0.15)",
+                                                color: "var(--color-saffron-dark)",
+                                                border: "1.5px solid var(--color-saffron)",
+                                                borderRadius: "6px",
+                                                fontSize: "11px",
+                                                fontWeight: 700,
+                                                cursor: "pointer",
+                                                display: "inline-flex",
+                                                alignItems: "center",
+                                                gap: "4px",
+                                                transition: "all 0.2s"
+                                              }}
+                                              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(244, 169, 66, 0.25)" }}
+                                              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(244, 169, 66, 0.15)" }}
+                                            >
+                                              {actingCert === s._id ? (
+                                                "Issuing..."
+                                              ) : (
+                                                <>
+                                                  <Award size={12} /> Issue Cert
+                                                </>
+                                              )}
+                                            </button>
+                                          );
+                                        })()}
+                                      </td>
+                                    )}
                                   </tr>
                                 ))}
                               </tbody>
@@ -449,7 +604,7 @@ export default function AdminStudentsPage() {
 
           {/* TAB 2: INDIVIDUAL ENROLLMENT MANAGER (ORIGINAL VIEW) */}
           {activeTab === "management" && (
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 380px", gap: "24px", alignItems: "start" }}>
+            <div className="admin-manager-grid">
               {/* Students table */}
               <div>
                 <div style={{ position: "relative", marginBottom: "16px" }}>
@@ -463,7 +618,7 @@ export default function AdminStudentsPage() {
                   />
                 </div>
 
-                <div style={{ background: "white", borderRadius: "16px", overflow: "hidden", boxShadow: "var(--shadow-card)" }}>
+                <div className="data-table-wrapper" style={{ background: "white", boxShadow: "var(--shadow-card)", border: "none" }}>
                   <table className="data-table" style={{ width: "100%" }}>
                     <thead>
                       <tr>

@@ -8,9 +8,9 @@ export async function GET() {
     const doc = await db.collection("settings").findOne({ key: "socials" });
     if (!doc) {
       return NextResponse.json({
-        instagram: "https://instagram.com/adfarrasheed",
-        linkedin: "https://linkedin.com/in/adfarrasheed",
-        youtube: "https://youtube.com/@adfarrasheed",
+        instagram: "https://www.instagram.com/adfarsirofficial?igsh=ZGU2ZDVlOXlqbDdx&utm_source=qr",
+        linkedin: "https://www.linkedin.com/in/adfar-rasheed/",
+        youtube: "https://www.youtube.com/@adfar-rasheed",
         twitter: "https://twitter.com/adfarrasheed",
         customLinks: []
       });

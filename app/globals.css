@@ -565,3 +565,217 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-3px);
 }
 
+/* Dashboard responsive container adjustments */
+.dashboard-container {
+  padding: 32px 40px;
+}
+
+@media (max-width: 1023px) {
+  .dashboard-container {
+    padding: 24px 20px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-container {
+    padding: 20px 16px !important;
+  }
+  
+  /* Stats Cards Grid scaling */
+  .stats-grid-responsive {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  
+  /* Overview split panel column wrap */
+  .dashboard-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  /* Data Table Horizontal Overflow prevention */
+  .data-table-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    border: 1.5px solid var(--color-cream-dark);
+  }
+  
+  .data-table {
+    min-width: 600px !important; /* Ensure readable spacing in tables on small viewports */
+  }
+  
+  /* Certificate details and layout scaling */
+  .card-responsive-padding {
+    padding: 20px 16px !important;
+  }
+}
+
+.stats-grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.dashboard-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+}
+
+.admin-split-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1023px) {
+  .admin-split-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.admin-manager-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1023px) {
+  .admin-manager-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Landing Page Instructor Grid */
+.instructor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .instructor-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+
+/* Landing Page Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+@media (max-width: 991px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .stats-grid > div {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .stats-grid > div:nth-child(2n) {
+    border-right: none !important;
+  }
+}
+
+@media (max-width: 479px) {
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-grid > div {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .stats-grid > div:last-child {
+    border-bottom: none !important;
+  }
+}
+
+/* About page social buttons */
+.social-btn-about {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white !important;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.social-btn-about.youtube:hover {
+  background: white !important;
+  color: #FF0000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+}
+
+.social-btn-about.instagram:hover {
+  background: white !important;
+  color: #E1306C !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 48, 108, 0.4);
+}
+
+.social-btn-about.linkedin:hover {
+  background: white !important;
+  color: #0077B5 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
+}
+
+/* Home page social buttons */
+.social-btn-home {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 1.5px solid var(--color-cream-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted) !important;
+  box-shadow: 0 4px 12px rgba(28,28,28,0.03);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.social-btn-home.youtube:hover {
+  color: white !important;
+  background: #FF0000 !important;
+  border-color: #FF0000 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.35);
+}
+
+.social-btn-home.instagram:hover {
+  color: white !important;
+  background: #E1306C !important;
+  border-color: #E1306C !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(225, 48, 108, 0.35);
+}
+
+.social-btn-home.linkedin:hover {
+  color: white !important;
+  background: #0077B5 !important;
+  border-color: #0077B5 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 119, 181, 0.35);
+}
+
+
+
+
+
+

@@ -187,21 +187,19 @@ export default async function BlogPostPage({ params }) {
                 alignItems: "flex-start",
               }}
             >
-              <div
+              <img
+                src="/adfar.jpg"
+                alt="Adfar Rasheed"
                 style={{
                   width: 56,
                   height: 56,
                   borderRadius: "50%",
-                  background: "linear-gradient(135deg, var(--color-saffron), var(--color-forest))",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "22px",
+                  objectFit: "cover",
                   flexShrink: 0,
+                  border: "2px solid var(--color-saffron)",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.1)"
                 }}
-              >
-                A
-              </div>
+              />
               <div>
                 <p style={{ fontWeight: 700, fontSize: "16px", marginBottom: "4px" }}>Adfar Rasheed</p>
                 <p style={{ fontSize: "13px", color: "var(--color-muted)", marginBottom: "10px" }}>

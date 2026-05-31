@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import DashboardSidebar from "@/components/DashboardSidebar";
+import DashboardLayoutClient from "@/components/DashboardLayoutClient";
 
 export default async function DashboardLayout({ children }) {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -11,11 +11,8 @@ export default async function DashboardLayout({ children }) {
   }
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", background: "var(--color-cream)" }}>
-      <DashboardSidebar user={session.user} />
-      <main style={{ flex: 1, minWidth: 0, overflow: "auto" }}>
-        {children}
-      </main>
-    </div>
+    <DashboardLayoutClient user={session.user}>
+      {children}
+    </DashboardLayoutClient>
   );
 }

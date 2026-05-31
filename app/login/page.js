@@ -1,0 +1,254 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import { GraduationCap, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+
+export default function LoginPage() {
+  const router = useRouter();
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [showPass, setShowPass] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleCredentials = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    const { error: err } = await authClient.signIn.email({
+      email: form.email,
+      password: form.password,
+    });
+    setLoading(false);
+    if (err) {
+      setError(err.message || "Invalid email or password.");
+    } else {
+      const session = await authClient.getSession();
+      if (session?.data?.user?.role === "admin") {
+        router.push("/admin");
+      } else {
+        router.push("/dashboard");
+      }
+      router.refresh();
+    }
+  };
+
+  const handleGoogle = async () => {
+    setError("");
+    await authClient.signIn.social({ provider: "google" });
+  };
+
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "var(--color-cream)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "24px",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Background accent */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-100px",
+          right: "-100px",
+          width: "500px",
+          height: "500px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(244,169,66,0.1) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-80px",
+          left: "-80px",
+          width: "400px",
+          height: "400px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(45,106,79,0.08) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div style={{ width: "100%", maxWidth: "440px", position: "relative", zIndex: 1 }}>
+        {/* Logo */}
+        <Link
+          href="/"
+          style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", justifyContent: "center", marginBottom: "36px" }}
+        >
+          <div
+            style={{
+              width: 40,
+              height: 40,
+              background: "linear-gradient(135deg, #F4A942, #D4891E)",
+              borderRadius: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <GraduationCap size={22} color="white" />
+          </div>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 700, color: "var(--color-charcoal)" }}>
+            EdupiSchool
+          </span>
+        </Link>
+
+        <div className="card" style={{ padding: "40px", borderRadius: "24px" }}>
+          <h1
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "28px",
+              fontWeight: 700,
+              color: "var(--color-charcoal)",
+              marginBottom: "6px",
+              textAlign: "center",
+            }}
+          >
+            Welcome back
+          </h1>
+          <p style={{ textAlign: "center", fontSize: "15px", color: "var(--color-muted)", marginBottom: "32px" }}>
+            Sign in to your EdupiSchool account
+          </p>
+
+          {/* Google Sign In */}
+          <button
+            onClick={handleGoogle}
+            style={{
+              width: "100%",
+              padding: "12px 20px",
+              background: "white",
+              border: "1.5px solid var(--color-cream-dark)",
+              borderRadius: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "10px",
+              fontSize: "15px",
+              fontWeight: 600,
+              color: "var(--color-charcoal)",
+              cursor: "pointer",
+              transition: "border-color 0.2s ease, box-shadow 0.2s ease",
+              marginBottom: "24px",
+              fontFamily: "var(--font-sans)",
+            }}
+            onMouseEnter={(e) => { e.target.style.borderColor = "var(--color-saffron)"; e.target.style.boxShadow = "0 0 0 3px rgba(244,169,66,0.1)"; }}
+            onMouseLeave={(e) => { e.target.style.borderColor = "var(--color-cream-dark)"; e.target.style.boxShadow = "none"; }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18">
+              <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+              <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+              <path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/>
+              <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+            </svg>
+            Continue with Google
+          </button>
+
+          {/* Divider */}
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
+            <div style={{ flex: 1, height: "1px", background: "var(--color-cream-dark)" }} />
+            <span style={{ fontSize: "13px", color: "var(--color-muted)", fontWeight: 500 }}>or</span>
+            <div style={{ flex: 1, height: "1px", background: "var(--color-cream-dark)" }} />
+          </div>
+
+          {/* Error */}
+          {error && (
+            <div
+              style={{
+                padding: "12px 16px",
+                background: "rgba(220,38,38,0.08)",
+                border: "1px solid rgba(220,38,38,0.2)",
+                borderRadius: "10px",
+                fontSize: "14px",
+                color: "#B91C1C",
+                marginBottom: "20px",
+              }}
+            >
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleCredentials}>
+            <div className="form-group">
+              <label className="form-label" htmlFor="login-email">Email address</label>
+              <div style={{ position: "relative" }}>
+                <Mail size={16} style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "var(--color-muted)" }} />
+                <input
+                  id="login-email"
+                  type="email"
+                  required
+                  className="input-field"
+                  style={{ paddingLeft: "42px" }}
+                  placeholder="you@example.com"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                />
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label className="form-label" htmlFor="login-password">Password</label>
+              <div style={{ position: "relative" }}>
+                <Lock size={16} style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", color: "var(--color-muted)" }} />
+                <input
+                  id="login-password"
+                  type={showPass ? "text" : "password"}
+                  required
+                  className="input-field"
+                  style={{ paddingLeft: "42px", paddingRight: "42px" }}
+                  placeholder="Enter your password"
+                  value={form.password}
+                  onChange={(e) => setForm({ ...form, password: e.target.value })}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPass(!showPass)}
+                  style={{
+                    position: "absolute",
+                    right: "14px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    color: "var(--color-muted)",
+                    padding: 0,
+                    display: "flex",
+                  }}
+                >
+                  {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn-primary"
+              style={{ width: "100%", justifyContent: "center", fontSize: "16px", padding: "14px", marginTop: "8px", opacity: loading ? 0.7 : 1 }}
+            >
+              {loading ? "Signing in…" : "Sign In"}
+              {!loading && <ArrowRight size={16} />}
+            </button>
+          </form>
+
+          <p style={{ textAlign: "center", fontSize: "14px", color: "var(--color-muted)", marginTop: "24px" }}>
+            Don't have an account?{" "}
+            <Link href="/signup" style={{ color: "var(--color-saffron-dark)", fontWeight: 600, textDecoration: "none" }}>
+              Create one
+            </Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

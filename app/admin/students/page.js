@@ -539,7 +539,7 @@ export default function AdminStudentsPage() {
                       </p>
                       <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                         {data.batches.map((batch) => {
-                          const isEnrolled = selectedUser.enrolledBatches?.includes(batch._id);
+                          const isEnrolled = Array.isArray(selectedUser?.enrolledBatches) && selectedUser.enrolledBatches.includes(batch._id);
                           return (
                             <div key={batch._id} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", background: isEnrolled ? "rgba(45,106,79,0.07)" : "var(--color-cream)", borderRadius: "8px" }}>
                               <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
@@ -580,7 +580,7 @@ export default function AdminStudentsPage() {
                         </p>
                         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                           {data.masterclasses.map((mc) => {
-                            const isBooked = selectedUser.bookedMasterclasses?.includes(mc._id);
+                            const isBooked = Array.isArray(selectedUser?.bookedMasterclasses) && selectedUser.bookedMasterclasses.includes(mc._id);
                             return (
                               <div key={mc._id} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 12px", background: isBooked ? "rgba(244,169,66,0.07)" : "var(--color-cream)", borderRadius: "8px" }}>
                                 <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>

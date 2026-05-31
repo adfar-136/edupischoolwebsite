@@ -425,7 +425,7 @@ export default function InterviewPrepPage() {
           {loading ? (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "300px", gap: "16px" }}>
               <div style={{ width: "40px", height: "40px", borderRadius: "50%", border: "3px solid rgba(244,169,66,0.1)", borderTopColor: "#F4A942", animation: "spin 1s linear infinite" }} />
-              <p style={{ color: "#a59e95", fontSize: "14px" }}>Fetching premium questions from MongoDB...</p>
+              <p style={{ color: "#a59e95", fontSize: "14px" }}>Fetching premium questions...</p>
             </div>
           ) : questions.length === 0 ? (
             <div className="glass-card" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", minHeight: "300px", padding: "40px", borderRadius: "20px", textAlign: "center" }}>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GraduationCap, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 
 // Inline social icons for compatibility with older lucide-react versions
 function YoutubeIcon({ size = 16, ...props }) {
@@ -59,31 +59,8 @@ export default function Footer() {
         >
           {/* Brand */}
           <div>
-            <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", marginBottom: "16px" }}>
-              <div
-                style={{
-                  width: 36,
-                  height: 36,
-                  background: "linear-gradient(135deg, #F4A942, #D4891E)",
-                  borderRadius: "10px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                }}
-              >
-                <GraduationCap size={20} color="white" strokeWidth={2} />
-              </div>
-              <span
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                  color: "white",
-                }}
-              >
-                EdupiSchool
-              </span>
+            <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none", marginBottom: "16px" }}>
+              <img src="/logo.svg" alt="EdupiSchool" style={{ height: "42px", width: "auto" }} />
             </Link>
             <p style={{ fontSize: "14px", lineHeight: 1.7, marginBottom: "20px" }}>
               Premium tech education by Adfar Rasheed — Full Stack Development, DSA, and Generative AI. Built from Kashmir, for the world.

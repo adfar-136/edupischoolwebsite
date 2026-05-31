@@ -60,13 +60,8 @@ export default function AdminSidebar({ user }) {
     >
       {/* Logo */}
       <div style={{ padding: "0 24px 24px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <Link href="/admin" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", marginBottom: "4px" }}>
-          <div style={{ width: 32, height: 32, background: "linear-gradient(135deg, #F4A942, #D4891E)", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <GraduationCap size={18} color="white" />
-          </div>
-          <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "16px", color: "white" }}>
-            EdupiSchool
-          </span>
+        <Link href="/admin" style={{ display: "flex", alignItems: "center", textDecoration: "none", marginBottom: "4px" }}>
+          <img src="/logo-light.svg" alt="EdupiSchool" style={{ height: "40px", width: "auto" }} />
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: "6px", marginTop: "8px" }}>
           <Shield size={12} color="#F4A942" />

@@ -1,0 +1,40 @@
+<svg width="100%" height="100%" viewBox="0 0 205 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Premium Gradient for the Icon background -->
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4A942" />
+      <stop offset="100%" stop-color="#2D6A4F" />
+    </linearGradient>
+    
+    <!-- Premium Gradient for Pi text/accents -->
+    <linearGradient id="saffron-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F4A942" />
+      <stop offset="100%" stop-color="#D4891E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Logo Mark (Shield & Icon) -->
+  <g transform="translate(10, 10)">
+    <!-- Base Shield -->
+    <rect width="60" height="60" rx="18" fill="url(#shield-grad)" />
+    <!-- White inner border for crisp definition -->
+    <rect x="3" y="3" width="54" height="54" rx="15" fill="none" stroke="#FAF7F2" stroke-width="1.5" opacity="0.15" />
+    
+    <!-- Stylized E & Pi lockup inside shield -->
+    <!-- Letter E (Left side) -->
+    <path d="M22 20 H34 M22 20 V40 H34 M22 30 H30" stroke="#FAF7F2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    
+    <!-- Pi Symbol (Right side, nested nicely) -->
+    <path d="M36 24 H48 M39 24 V40 M45 24 V40" stroke="#FAF7F2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+
+  <!-- Wordmark Text (Dark Charcoal for Light Navbar) -->
+  <text x="85" y="43" font-family="'DM Sans', -apple-system, sans-serif" font-size="30" font-weight="900" fill="#1C1C1C" letter-spacing="-0.03em">
+    Edu<tspan fill="url(#saffron-grad)">Pi</tspan>
+  </text>
+  
+  <!-- SCHOOL subtitle -->
+  <text x="86" y="59" font-family="'DM Sans', -apple-system, sans-serif" font-size="11" font-weight="800" fill="#2D6A4F" letter-spacing="0.32em">
+    SCHOOL
+  </text>
+</svg>

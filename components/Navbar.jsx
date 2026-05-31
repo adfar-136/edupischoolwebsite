@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { Menu, X, BookOpen, GraduationCap } from "lucide-react";
+import { Menu, X, BookOpen } from "lucide-react";
 
 const navLinks = [
   { href: "/batches", label: "Batches" },
@@ -40,31 +40,8 @@ export default function Navbar() {
     >
       <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "68px" }}>
         {/* Logo */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
-          <div
-            style={{
-              width: 36,
-              height: 36,
-              background: "linear-gradient(135deg, #F4A942, #D4891E)",
-              borderRadius: "10px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <GraduationCap size={20} color="white" strokeWidth={2} />
-          </div>
-          <span
-            style={{
-              fontFamily: "var(--font-display)",
-              fontWeight: 700,
-              fontSize: "20px",
-              color: "var(--color-charcoal)",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            EdupiSchool
-          </span>
+        <Link href="/" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+          <img src="/logo.svg" alt="EdupiSchool" style={{ height: "50px", width: "auto" }} />
         </Link>
 
         {/* Desktop Nav */}
@@ -129,24 +106,29 @@ export default function Navbar() {
             gap: "4px",
           }}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              style={{
-                padding: "12px 16px",
-                borderRadius: "10px",
-                fontSize: "15px",
-                fontWeight: 500,
-                color: "var(--color-charcoal)",
-                textDecoration: "none",
-                display: "block",
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  padding: "12px 16px",
+                  borderRadius: "10px",
+                  fontSize: "15px",
+                  fontWeight: isActive ? 600 : 500,
+                  color: isActive ? "var(--color-forest)" : "var(--color-muted)",
+                  background: isActive ? "rgba(45, 106, 79, 0.05)" : "transparent",
+                  textDecoration: "none",
+                  display: "block",
+                  transition: "all 0.2s ease",
+                }}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <div style={{ marginTop: "12px", display: "flex", flexDirection: "column", gap: "8px" }}>
             {session ? (
               <>

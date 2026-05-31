@@ -313,13 +313,8 @@ export default function CheckoutPage() {
     <div style={{ minHeight: "100vh", background: "var(--color-cream)", paddingTop: "60px", paddingBottom: "80px" }}>
       {/* Mini header */}
       <div style={{ textAlign: "center", marginBottom: "40px" }}>
-        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "8px", textDecoration: "none" }}>
-          <div style={{ width: 32, height: 32, background: "linear-gradient(135deg, #F4A942, #D4891E)", borderRadius: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <GraduationCap size={18} color="white" />
-          </div>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)" }}>
-            EdupiSchool
-          </span>
+        <Link href="/" style={{ display: "inline-flex", alignItems: "center", textDecoration: "none" }}>
+          <img src="/logo.svg" alt="EdupiSchool" style={{ height: "40px", width: "auto" }} />
         </Link>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "16px", marginTop: "20px" }}>
           {["Item", "Details", "Confirm"].map((step, i) => (

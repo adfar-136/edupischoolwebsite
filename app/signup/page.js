@@ -87,14 +87,9 @@ export default function SignupPage() {
         {/* Logo */}
         <Link
           href="/"
-          style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none", justifyContent: "center", marginBottom: "36px" }}
+          style={{ display: "flex", alignItems: "center", textDecoration: "none", justifyContent: "center", marginBottom: "36px" }}
         >
-          <div style={{ width: 40, height: 40, background: "linear-gradient(135deg, #F4A942, #D4891E)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <GraduationCap size={22} color="white" />
-          </div>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "22px", fontWeight: 700, color: "var(--color-charcoal)" }}>
-            EdupiSchool
-          </span>
+          <img src="/logo.svg" alt="EdupiSchool" style={{ height: "46px", width: "auto" }} />
         </Link>
 
         <div className="card" style={{ padding: "40px", borderRadius: "24px" }}>

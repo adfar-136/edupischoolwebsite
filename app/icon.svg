@@ -1,0 +1,22 @@
+<svg width="100%" height="100%" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Premium Gradient for the Icon background -->
+    <linearGradient id="fav-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4A942" />
+      <stop offset="100%" stop-color="#2D6A4F" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Shield/Rounded Square filling the viewport -->
+  <rect width="160" height="160" rx="44" fill="url(#fav-grad)" />
+  
+  <!-- Inner border for high-end definition -->
+  <rect x="8" y="8" width="144" height="144" rx="36" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.15" />
+
+  <!-- E & Pi lockup inside shield, scaled up perfectly for favicon resolution -->
+  <!-- Letter E -->
+  <path d="M48 50 H84 M48 50 V110 H84 M48 80 H74" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  
+  <!-- Pi Symbol -->
+  <path d="M90 62 H122 M98 62 V110 M114 62 V110" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+</svg>

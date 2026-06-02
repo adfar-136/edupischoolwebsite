@@ -18,15 +18,21 @@ import {
   Shield,
   PhoneCall,
   Settings,
+  UserCog,
+  MessageSquare,
+  Layers,
 } from "lucide-react";
 
 const links = [
   { href: "/admin", icon: LayoutDashboard, label: "Overview", exact: true },
   { href: "/admin/batches", icon: BookOpen, label: "Batches" },
+  { href: "/admin/modules", icon: Layers, label: "Modules" },
   { href: "/admin/lectures", icon: Video, label: "Lectures" },
   { href: "/admin/masterclasses", icon: Star, label: "Masterclasses" },
   { href: "/admin/assignments", icon: ClipboardList, label: "Assignments" },
   { href: "/admin/announcements", icon: Bell, label: "Announcements" },
+  { href: "/admin/instructors", icon: UserCog, label: "Instructors" },
+  { href: "/admin/testimonials", icon: MessageSquare, label: "Testimonials" },
   { href: "/admin/students", icon: Users, label: "Students" },
   { href: "/admin/leads", icon: PhoneCall, label: "Leads" },
   { href: "/admin/settings", icon: Settings, label: "Settings" },

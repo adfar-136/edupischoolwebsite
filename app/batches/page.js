@@ -7,6 +7,10 @@ const CATEGORY_COLORS = {
   FSD: { bg: "rgba(59,130,246,0.1)", text: "#1D4ED8", bar: "linear-gradient(90deg, #3B82F6, #6366F1)" },
   DSA: { bg: "rgba(45,106,79,0.1)", text: "#2D6A4F", bar: "linear-gradient(90deg, #2D6A4F, #52B788)" },
   GenAI: { bg: "rgba(244,169,66,0.15)", text: "#D4891E", bar: "linear-gradient(90deg, #F4A942, #D4891E)" },
+  DataAnalytics: { bg: "rgba(13,148,136,0.1)", text: "#0F766E", bar: "linear-gradient(90deg, #0D9488, #14B8A6)" },
+  DataScience: { bg: "rgba(124,58,237,0.1)", text: "#6D28D9", bar: "linear-gradient(90deg, #7C3AED, #A78BFA)" },
+  Fundamentals: { bg: "rgba(225,29,72,0.1)", text: "#BE123C", bar: "linear-gradient(90deg, #E11D48, #F43F5E)" },
+  CyberSecurity: { bg: "rgba(217,119,6,0.1)", text: "#B45309", bar: "linear-gradient(90deg, #D97706, #F59E0B)" },
 };
 
 const FALLBACK_BATCHES = [
@@ -55,7 +59,7 @@ export default async function BatchesPage({ searchParams }) {
   const batches = await getBatches();
   const params = await searchParams;
   const activeCategory = params?.category || "All";
-  const categories = ["All", "FSD", "DSA"];
+  const categories = ["All", "FSD", "DSA", "GenAI", "DataAnalytics", "DataScience", "Fundamentals", "CyberSecurity"];
 
   const upcomingBatch = batches.find((b) => {
     if (!b.startDate || b.status !== "active") return false;
@@ -143,7 +147,23 @@ export default async function BatchesPage({ searchParams }) {
                 borderColor: activeCategory === cat ? "var(--color-charcoal)" : "var(--color-cream-dark)",
               }}
             >
-              {cat === "All" ? "All Batches" : cat === "FSD" ? "Full Stack Dev" : "DSA"}
+              {cat === "All"
+                ? "All Batches"
+                : cat === "FSD"
+                ? "Full Stack Dev"
+                : cat === "DSA"
+                ? "DSA"
+                : cat === "GenAI"
+                ? "Generative AI"
+                : cat === "DataAnalytics"
+                ? "Data Analytics"
+                : cat === "DataScience"
+                ? "Data Science"
+                : cat === "Fundamentals"
+                ? "Fundamentals"
+                : cat === "CyberSecurity"
+                ? "Cyber Security"
+                : cat}
             </Link>
           ))}
         </div>
@@ -306,12 +326,16 @@ export default async function BatchesPage({ searchParams }) {
                           fontFamily: "var(--font-display)",
                           fontSize: "24px",
                           fontWeight: 700,
-                          marginBottom: "12px",
+                          marginBottom: "4px",
                           color: "var(--color-charcoal)",
                         }}
                       >
                         {batch.title}
                       </h2>
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--color-muted)", marginBottom: "16px" }}>
+                        <span style={{ fontWeight: 600 }}>Taught by:</span>
+                        <span>{batch.instructorName || "Adfar Rasheed"}</span>
+                      </div>
                       <p style={{ fontSize: "14px", color: "var(--color-muted)", lineHeight: 1.7, marginBottom: "20px" }}>
                         {batch.description}
                       </p>

@@ -16,14 +16,14 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: "EdupiSchool — Learn FSD, DSA & GenAI from Kashmir's Own",
+  title: "EdupiSchool — Premium Grassroots Tech Academy",
   description:
-    "Join Adfar Rasheed's live weekly batches in Full Stack Development, DSA, and Generative AI. Premium tech education from Kashmir — batches, masterclasses, and hands-on mentorship.",
-  keywords: "FSD course, DSA, Generative AI, Kashmir tech, live online classes, Adfar Rasheed",
+    "Join live, expert-led cohorts in Full Stack Development, DSA, Data Science, and Cyber Security. Premium grassroots upskilling academy with hands-on mentoring.",
+  keywords: "FSD course, DSA, Generative AI, Data Science, Cyber Security, Kashmir tech, live online classes, EdupiSchool",
   openGraph: {
-    title: "EdupiSchool — Learn FSD, DSA & GenAI from Kashmir's Own",
+    title: "EdupiSchool — Premium Grassroots Tech Academy",
     description:
-      "Premium tech education from Kashmir. Join live weekly batches and masterclasses by Adfar Rasheed.",
+      "Premium upskilling cohorts and masterclasses in engineering, data, and security.",
     type: "website",
     url: process.env.NEXT_PUBLIC_APP_URL,
   },

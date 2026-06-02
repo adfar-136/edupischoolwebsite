@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Edit, Trash2, X, Save } from "lucide-react";
 
-const EMPTY = { topic: "", description: "", scheduledAt: "", price: 199, joinLink: "", recordingLink: "" };
+const EMPTY = { topic: "", description: "", scheduledAt: "", price: 199, joinLink: "", recordingLink: "", instructorName: "", instructorTitle: "" };
 
 export default function AdminMasterclassesPage() {
   const [masterclasses, setMasterclasses] = useState([]);
@@ -39,6 +39,8 @@ export default function AdminMasterclassesPage() {
       price: mc.price || 199,
       joinLink: mc.joinLink || "",
       recordingLink: mc.recordingLink || "",
+      instructorName: mc.instructorName || "",
+      instructorTitle: mc.instructorTitle || "",
     });
     setError("");
     setShowForm(true);
@@ -103,8 +105,9 @@ export default function AdminMasterclassesPage() {
                       {mc.topic}
                     </h3>
                     <p style={{ fontSize: "13px", color: "var(--color-muted)", marginBottom: "8px" }}>{mc.description}</p>
-                    <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "var(--color-muted)" }}>
+                    <div style={{ display: "flex", gap: "16px", fontSize: "12px", color: "var(--color-muted)", flexWrap: "wrap" }}>
                       <span>📅 {mc.scheduledAt ? new Date(mc.scheduledAt).toLocaleString("en-IN") : "Not set"}</span>
+                      <span>👤 {mc.instructorName || "Adfar Rasheed"}</span>
                       {mc.joinLink && <span>🔗 Join link set</span>}
                       {mc.recordingLink && <span>🎥 Recording available</span>}
                     </div>
@@ -157,6 +160,16 @@ export default function AdminMasterclassesPage() {
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Zoom / Meet Join Link</label>
                 <input type="url" className="input-field" placeholder="https://meet.google.com/..." value={form.joinLink} onChange={(e) => setForm({ ...form, joinLink: e.target.value })} />
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label">Instructor Name</label>
+                  <input className="input-field" placeholder="e.g. Adfar Rasheed" value={form.instructorName || ""} onChange={(e) => setForm({ ...form, instructorName: e.target.value })} />
+                </div>
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label">Instructor Title</label>
+                  <input className="input-field" placeholder="e.g. Lead Educator" value={form.instructorTitle || ""} onChange={(e) => setForm({ ...form, instructorTitle: e.target.value })} />
+                </div>
               </div>
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Google Drive Recording Link (post-session)</label>

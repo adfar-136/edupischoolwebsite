@@ -17,6 +17,30 @@ export async function PUT(request, { params }) {
   const { id } = await params;
   const body = await request.json();
 
+  const currentLecture = await db.collection("lectures").findOne({ _id: new ObjectId(id) });
+  if (!currentLecture) {
+    return NextResponse.json({ error: "Lecture not found" }, { status: 404 });
+  }
+
+  const newBatchId = body.batchId || currentLecture.batchId.toString();
+  const newModuleName = body.moduleName !== undefined ? body.moduleName : currentLecture.moduleName;
+
+  if (body.moduleName !== undefined || body.batchId !== undefined) {
+    if (!newModuleName) {
+      return NextResponse.json({ error: "moduleName is required" }, { status: 400 });
+    }
+    const moduleExists = await db.collection("modules").findOne({
+      name: newModuleName,
+      $or: [
+        { batchId: newBatchId },
+        { batchId: new ObjectId(newBatchId) }
+      ]
+    });
+    if (!moduleExists) {
+      return NextResponse.json({ error: "The selected module does not exist for this batch." }, { status: 400 });
+    }
+  }
+
   const update = { updatedAt: new Date() };
   const fields = ["title", "description", "lectureNumber", "joinLink", "recordingLink", "resources", "completed", "moduleName", "notes"];
   fields.forEach((f) => { if (body[f] !== undefined) update[f] = body[f]; });

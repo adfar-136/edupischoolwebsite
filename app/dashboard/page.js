@@ -165,9 +165,12 @@ export default async function DashboardPage() {
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "12px" }}>
                       <div>
                         <span className="badge badge-saffron" style={{ marginBottom: "8px", display: "inline-block" }}>{batch.category}</span>
-                        <h3 style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)" }}>
+                        <h3 style={{ fontFamily: "var(--font-display)", fontSize: "18px", fontWeight: 700, color: "var(--color-charcoal)", marginBottom: "2px" }}>
                           {batch.title}
                         </h3>
+                        <p style={{ fontSize: "12.5px", color: "var(--color-muted)", marginBottom: "8px" }}>
+                          Instructor: {batch.instructorName || "Adfar Rasheed"}
+                        </p>
                       </div>
                       <Link
                         href={`/dashboard/batches/${batch.slug}`}
@@ -211,9 +214,12 @@ export default async function DashboardPage() {
                   return (
                     <div key={mc._id} className="card" style={{ padding: "20px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
                       <div>
-                        <h4 style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 700, marginBottom: "4px" }}>
+                        <h4 style={{ fontFamily: "var(--font-display)", fontSize: "16px", fontWeight: 700, marginBottom: "2px" }}>
                           {mc.topic}
                         </h4>
+                        <p style={{ fontSize: "12px", color: "var(--color-muted)", marginBottom: "6px" }}>
+                          Instructor: {mc.instructorName || "Adfar Rasheed"}
+                        </p>
                         <div style={{ display: "flex", gap: "12px", fontSize: "12px", color: "var(--color-muted)" }}>
                           <span style={{ display: "flex", alignItems: "center", gap: "4px" }}>
                             <Calendar size={11} />

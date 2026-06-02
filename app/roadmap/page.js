@@ -23,6 +23,18 @@ const AiIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 0 1 7.54 16.59c-.24.25-.39.58-.39.93v1.98a2 2 0 0 1-2 2h-6.3a2 2 0 0 1-2-2v-1.98c0-.35-.15-.68-.39-.93A10 10 0 0 1 12 2z"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
 );
 
+const AnalyticsIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+);
+
+const ScienceIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+);
+
+const SecurityIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+);
+
 const ClockIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
 );
@@ -197,7 +209,7 @@ export default function RoadmapPage() {
     if (focusArea === "FSD") {
       return {
         title: "Live Full Stack Development (MERN) Cohort",
-        description: "Master React, Next.js 15, Node.js, and MongoDB in a live 8-month cohort with 3 interactive classes every week led directly by Adfar Rasheed.",
+        description: "Master React, Next.js 16, Node.js, and MongoDB in a live 8-month cohort with 3 interactive classes every week led directly by Adfar Rasheed.",
         link: "/batches/full-stack-development",
         badge: "FSD LIVE BATCH"
       };
@@ -208,6 +220,30 @@ export default function RoadmapPage() {
         description: "Scale your problem-solving capabilities. A structured approach covering arrays, linked lists, trees, graphs, and dynamic programming built for premium tech interview placements.",
         link: "/batches/data-structures-algorithms",
         badge: "DSA LIVE BATCH"
+      };
+    }
+    if (focusArea === "DataAnalytics") {
+      return {
+        title: "Data Analytics Specialization Cohort",
+        description: "Master Excel, SQL, Tableau, PowerBI, and Python for data analysis. Learn business data translation, visual dashboarding, and executive presentations.",
+        link: "/batches/data-analytics-specialization",
+        badge: "DATA ANALYTICS LIVE BATCH"
+      };
+    }
+    if (focusArea === "DataScience") {
+      return {
+        title: "Machine Learning & Data Science Cohort",
+        description: "Deep dive into statistical analysis, regression models, neural networks, PyTorch, computer vision, and model deployment workloads in live interactive cohorts.",
+        link: "/batches/machine-learning-data-science",
+        badge: "DATA SCIENCE LIVE BATCH"
+      };
+    }
+    if (focusArea === "CyberSecurity") {
+      return {
+        title: "Advanced Cyber Security & SecOps Cohort",
+        description: "Learn network defense, penetration testing, threat hunting, and cloud security configurations in 100% hands-on live classes.",
+        link: "/batches/cyber-security-secops",
+        badge: "CYBER SECURITY LIVE BATCH"
       };
     }
     // Default fallback / GenAI masterclass enroll path
@@ -256,7 +292,10 @@ export default function RoadmapPage() {
                 {[
                   { id: "FSD", title: "Full Stack (MERN)", desc: "Build highly-responsive web designs, REST APIs, databases, and secure web integrations.", icon: <FsdIcon /> },
                   { id: "DSA", title: "Data Structures & Algos", desc: "Master algorithmic problem solving, binary trees, dynamic programming, and interview codes.", icon: <DsaIcon /> },
-                  { id: "GenAI", title: "Generative AI", desc: "Build LLM API wrappers, vector databases, semantic RAG systems, and autonomous agent loops.", icon: <AiIcon /> }
+                  { id: "GenAI", title: "Generative AI", desc: "Build LLM API wrappers, vector databases, semantic RAG systems, and autonomous agent loops.", icon: <AiIcon /> },
+                  { id: "DataAnalytics", title: "Data Analytics", desc: "Master Excel, SQL, Tableau, PowerBI, and Python for data analysis and dashboards.", icon: <AnalyticsIcon /> },
+                  { id: "DataScience", title: "Data Science & ML", desc: "Deep dive into statistical analysis, regression models, neural networks, and PyTorch.", icon: <ScienceIcon /> },
+                  { id: "CyberSecurity", title: "Cyber Security", desc: "Learn network defense, penetration testing, threat hunting, and cloud security.", icon: <SecurityIcon /> }
                 ].map((area) => {
                   const isSelected = focusArea === area.id;
                   
@@ -540,7 +579,7 @@ export default function RoadmapPage() {
                 
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
                   <span className="badge badge-saffron" style={{ background: "rgba(244, 169, 66, 0.15)", color: "#F4A942", border: "1px solid rgba(244, 169, 66, 0.2)" }}>
-                    Focus: {focusArea === "FSD" ? "Full Stack" : focusArea === "DSA" ? "DSA" : "Gen AI"}
+                    Focus: {focusArea === "FSD" ? "Full Stack" : focusArea === "DSA" ? "DSA" : focusArea === "GenAI" ? "Gen AI" : focusArea === "DataAnalytics" ? "Data Analytics" : focusArea === "DataScience" ? "Data Science" : "Cyber Security"}
                   </span>
                   <span className="badge badge-forest" style={{ background: "rgba(82, 183, 136, 0.15)", color: "#52B788", border: "1px solid rgba(82, 183, 136, 0.2)" }}>
                     Level: {level}

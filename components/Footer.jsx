@@ -63,7 +63,7 @@ export default function Footer() {
               <img src="/logo.svg" alt="EdupiSchool" style={{ height: "42px", width: "auto" }} />
             </Link>
             <p style={{ fontSize: "14px", lineHeight: 1.7, marginBottom: "20px" }}>
-              Premium tech education by Adfar Rasheed — Full Stack Development, DSA, and Generative AI. Built from Kashmir, for the world.
+              EduPiS School is a premium tech academy offering live upskilling cohorts in Full Stack, DSA, Data Science, Cyber Security, and more, led by Adfar Rasheed and industry professionals.
             </p>
             <div style={{ display: "flex", gap: "12px" }}>
               {[
@@ -132,7 +132,7 @@ export default function Footer() {
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
               {[
-                { href: "/about", label: "About Adfar" },
+                { href: "/about", label: "About the Founder" },
                 { href: "/blog", label: "Blog" },
                 { href: "/login", label: "Student Login" },
                 { href: "/signup", label: "Join EdupiSchool" },
@@ -200,7 +200,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: "13px" }}>
-            © {new Date().getFullYear()} EdupiSchool by Adfar Rasheed. All rights reserved.
+            © {new Date().getFullYear()} EdupiSchool. All rights reserved.
           </p>
           <p style={{ fontSize: "13px" }}>
             Made with ♥ from{" "}

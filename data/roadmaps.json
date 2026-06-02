@@ -473,6 +473,480 @@
           "adfarTip": "Adfar Sir's Pro Tip: API calls to OpenAI or Anthropic get expensive fast. Implement database caching for common requests to protect your wallet!"
         }
       ]
+    },
+    "DataAnalytics": {
+      "title": "Data Analytics Specialization",
+      "description": "Master clean data ingestion, SQL query formulation, dashboard visual models, and business analysis metrics.",
+      "baseWeeks": [
+        {
+          "week": "Week 1",
+          "topic": "Excel Essentials & Data Preparation",
+          "tasks": [
+            "Learn Excel formulas, functions, lookup techniques (VLOOKUP, XLOOKUP, INDEX/MATCH)",
+            "Master data cleaning, handling missing values, and formatting types",
+            "Implement basic statistical formulas (mean, median, standard deviation)"
+          ],
+          "projects": {
+            "Job": "Prepare a clean business cohort client report with lookup tables",
+            "Freelancing": "Build an interactive automated invoice reconciler sheet for clients",
+            "Build Projects": "Build a personal budget tracker sheet using clean Excel formatting tools"
+          },
+          "alternativeQuests": [
+            "Create standard data hygiene checklist for analytics files",
+            "Audit a messy CSV file for empty rows and mismatched data formats"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Over 80% of data analytics tasks start with messy spreadsheets. Excel is still the most widely used tool on Earth — master its formulas first!"
+        },
+        {
+          "week": "Week 2",
+          "topic": "Advanced Excel Modeling & Pivot Tables",
+          "tasks": [
+            "Create interactive pivot tables and pivot charts with slicers",
+            "Perform regression and trendline analysis within Excel Toolpak",
+            "Learn nesting conditional formats for visual hierarchy"
+          ],
+          "projects": {
+            "Job": "Construct a dynamic sales performance dashboard with slicer controls",
+            "Freelancing": "Design a client inventory tracker reporting dynamic stock alarms",
+            "Build Projects": "Build a tracking board monitoring personal investments"
+          },
+          "alternativeQuests": [
+            "Build a multi-tab business spreadsheet linking dynamic source tables",
+            "Perform standard outlier detection using boxplot visualizations"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: A great dashboard tells a story. Keep color themes simple, place KPIs at the top-left, and ensure filters are clear and intuitive."
+        },
+        {
+          "week": "Week 3",
+          "topic": "Relational Databases & Structured SQL Queries",
+          "tasks": [
+            "Master SQL SELECT, WHERE, ORDER BY, and LIMIT query clauses",
+            "Understand relational database designs and primary/foreign key connections",
+            "Formulate multi-table JOINs (INNER, LEFT, RIGHT, FULL OUTER)"
+          ],
+          "projects": {
+            "Job": "Query enterprise database sets to build customer segment listings",
+            "Freelancing": "Formulate reporting SQL queries extraction scripts for a client store",
+            "Build Projects": "Design a relational schema for a digital bookstore catalogue"
+          },
+          "alternativeQuests": [
+            "Write SQL query counting aggregate orders by customer city index",
+            "Compare query execution speeds between different JOIN methodologies"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: SQL is the lifeblood of data. Focus on understanding how JOINs work in memory before trying to write complex subqueries."
+        },
+        {
+          "week": "Week 4",
+          "topic": "Advanced SQL & Performance Optimizations",
+          "tasks": [
+            "Write advanced window functions (ROW_NUMBER, RANK, DENSE_RANK, LEAD/LAG)",
+            "Optimize query performance utilizing database indexes and explain plans",
+            "Construct Common Table Expressions (CTEs) for readable SQL structures"
+          ],
+          "projects": {
+            "Job": "Build an analytical report identifying month-over-month revenue change rates",
+            "Freelancing": "Create an automated reporting script executing slow-query checks",
+            "Build Projects": "Create a database dashboard showing top-performing products"
+          },
+          "alternativeQuests": [
+            "Optimize a query by replacing nested subqueries with readable CTEs",
+            "Write a transaction block ensuring safe database updates"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Window functions let you compare rows without complex self-joins. Master them and you will stand out in technical interviews!"
+        },
+        {
+          "week": "Week 5",
+          "topic": "Data Visualization with Tableau",
+          "tasks": [
+            "Learn Tableau canvas layouts, dimension/measure definitions, and hierarchies",
+            "Build interactive chart cards (scatter plots, heatmaps, dual-axis charts)",
+            "Design visual storytelling dashboards with filters and highlight actions"
+          ],
+          "projects": {
+            "Job": "Deliver an interactive regional sales dashboard showing profit margins",
+            "Freelancing": "Configure a hosted dashboard for a client tracking active users",
+            "Build Projects": "Build a public dashboard visualizing public transport metrics"
+          },
+          "alternativeQuests": [
+            "Apply custom color palettes matching brand guidelines inside Tableau dashboards",
+            "Implement a dashboard action navigating users between overview and detail sheets"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Avoid clutter. Too many charts on a single dashboard confuse decision makers. Focus on 3-4 key metrics per page."
+        },
+        {
+          "week": "Week 6",
+          "topic": "PowerBI Data Modeling & DAX",
+          "tasks": [
+            "Import and transform data using Power Query Editor structures",
+            "Build star schemas and model table relationships inside PowerBI",
+            "Write DAX formulas (CALCULATE, RELATED, DIVIDE, time intelligence)"
+          ],
+          "projects": {
+            "Job": "Build a financial performance dashboard tracking margins and dynamic KPIs",
+            "Freelancing": "Deploy a hosted PowerBI reporting suite tracking customer retention",
+            "Build Projects": "Design a sports analytics board tracking athletic statistics"
+          },
+          "alternativeQuests": [
+            "Create custom calendar date table using DAX for time intelligence",
+            "Configure conditional column formats in Power Query using custom M-code"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: DAX calculations are calculated within context. Master how row context and filter context interact to avoid mathematical errors."
+        },
+        {
+          "week": "Week 7",
+          "topic": "Python for Analytics (Pandas & Numpy)",
+          "tasks": [
+            "Learn Pandas DataFrames, Series, indexings, and query filtering",
+            "Perform data aggregations, groupings, and merging using Pandas",
+            "Plot visual charts using Matplotlib and Seaborn libraries"
+          ],
+          "projects": {
+            "Job": "Write a Python script cleaning a database csv export dataset",
+            "Freelancing": "Develop a lightweight reporting pipeline parsing client Excel folders",
+            "Build Projects": "Build a python script plotting temperature changes over time"
+          },
+          "alternativeQuests": [
+            "Analyze a DataFrame for missing values and fill them with median averages",
+            "Write a Python script calling a public weather API and saving results to CSV"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Python takes your analytics further. Use Pandas for massive files where Excel starts lagging or crashing."
+        },
+        {
+          "week": "Week 8",
+          "topic": "Business Translation & Capstone Presentation",
+          "tasks": [
+            "Translate mathematical findings into actionable executive presentations",
+            "Build full-stack data pipeline from SQL extraction to visual slides",
+            "Prepare dynamic presentation decks containing verified data insights"
+          ],
+          "projects": {
+            "Job": "Present a business proposal to solve logistics bottlenecks using data models",
+            "Freelancing": "Deliver a detailed business KPI overview audit for a client",
+            "Build Projects": "Publish a comprehensive Medium article analyzing global energy usage"
+          },
+          "alternativeQuests": [
+            "Record a 5-minute video presentation explaining a dataset's core insights",
+            "Conduct a peer review on a dashboard layout highlighting visual improvements"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Technical skills are worthless if you cannot explain the business impact of your findings. Learn to present clearly to non-tech managers!"
+        }
+      ]
+    },
+    "DataScience": {
+      "title": "Machine Learning & Data Science",
+      "description": "Master exploratory data structures, regression pipelines, neural networks, PyTorch, and deploying models to production.",
+      "baseWeeks": [
+        {
+          "week": "Week 1",
+          "topic": "Data Exploration & Python Libraries",
+          "tasks": [
+            "Master Pandas, Numpy, and Seaborn for Exploratory Data Analysis (EDA)",
+            "Identify and handle outliers, skewness, and missing feature values",
+            "Perform feature scaling (Standardization, MinMax Normalization)"
+          ],
+          "projects": {
+            "Job": "Create a comprehensive EDA notebook analyzing customer churn datasets",
+            "Freelancing": "Audit client sales history data and extract core feature distributions",
+            "Build Projects": "Build an interactive EDA dashboard plotting distributions using Streamlit"
+          },
+          "alternativeQuests": [
+            "Apply logarithmic transformations to highly skewed numerical features",
+            "Write a custom pipeline handling categorical values using one-hot encoding"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Garbage in, garbage out! The best machine learning model is useless if trained on poorly preprocessed data. Spend time on EDA!"
+        },
+        {
+          "week": "Week 2",
+          "topic": "Linear Algebra & Statistical Foundations",
+          "tasks": [
+            "Understand vector spaces, matrices, dot products, and eigenvalues",
+            "Master probability distributions, Central Limit Theorem, and hypothesis testing",
+            "Understand correlation coefficients and covariance matrices"
+          ],
+          "projects": {
+            "Job": "Perform A/B test analysis proving statistical significance of a landing page change",
+            "Freelancing": "Build an automated client analytics report proving marketing growth margins",
+            "Build Projects": "Write a statistics calculator from scratch using pure python functions"
+          },
+          "alternativeQuests": [
+            "Write a python script calculating p-values for custom sample metrics",
+            "Calculate the cosine similarity between two dimensional vectors by hand"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Machine learning is just applied statistics. Don't skip the math, otherwise you won't understand *why* your model is misbehaving."
+        },
+        {
+          "week": "Week 3",
+          "topic": "Supervised Learning: Regression & Classification",
+          "tasks": [
+            "Understand Linear Regression, Gradient Descent optimization, and cost functions",
+            "Master Logistic Regression, Sigmoid activations, and decision boundaries",
+            "Evaluate classifiers using Confusion Matrices, Precision, Recall, and F1-Scores"
+          ],
+          "projects": {
+            "Job": "Build a real-estate pricing estimator model using Scikit-Learn regression",
+            "Freelancing": "Develop a credit-card fraud detection classifier for a client portal",
+            "Build Projects": "Train an email spam classifier classifying text messages"
+          },
+          "alternativeQuests": [
+            "Implement Linear Regression gradient descent updates from scratch in Python",
+            "Plot ROC-AUC curves comparing multiple classification model parameters"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Always look at F1-score or Precision/Recall for imbalanced datasets. Accuracy is highly misleading when fraud occurs only 0.1% of the time!"
+        },
+        {
+          "week": "Week 4",
+          "topic": "Ensemble Methods & Model Optimization",
+          "tasks": [
+            "Understand Bagging (Random Forest) vs Boosting (XGBoost, LightGBM) concepts",
+            "Master hyperparameters: learning rate, tree depth, and regularization",
+            "Perform Grid Search and Random Search optimization loops"
+          ],
+          "projects": {
+            "Job": "Train a high-performance XGBoost model predicting customer subscription churn",
+            "Freelancing": "Construct an inventory estimator model optimizing warehouse restocking schedules",
+            "Build Projects": "Compare performance margins of Random Forest vs XGBoost on housing datasets"
+          },
+          "alternativeQuests": [
+            "Calculate feature importance metrics from an ensemble forest classifier",
+            "Configure cross-validation folds preventing model overfitting"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Hyperparameter tuning can lead to minor improvements, but feature engineering (combining or refining columns) is what yields major gains!"
+        },
+        {
+          "week": "Week 5",
+          "topic": "Unsupervised Learning & Dimensionality Reduction",
+          "tasks": [
+            "Master K-Means clustering and select optimal K using the Elbow method",
+            "Understand Principal Component Analysis (PCA) mathematical dimensions",
+            "Learn t-SNE visualization models for high-dimensional structures"
+          ],
+          "projects": {
+            "Job": "Perform customer segmentation grouping users into marketing cohorts",
+            "Freelancing": "Build an anomaly detector finding outlier log lines for a server client",
+            "Build Projects": "Visualize 100-dimensional datasets in 2D using PCA coordinates"
+          },
+          "alternativeQuests": [
+            "Calculate silhouette score coefficients for K-Means clusters",
+            "Write a python script projecting high-dimensional arrays onto principal component axes"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Unsupervised learning requires no labels. Use clustering to find hidden patterns in customer behaviors that you didn't even know existed."
+        },
+        {
+          "week": "Week 6",
+          "topic": "Deep Learning Foundations (PyTorch)",
+          "tasks": [
+            "Understand tensor operations, GPU acceleration, and computational graphs",
+            "Build Multi-Layer Perceptrons (MLPs) using PyTorch nn.Module templates",
+            "Master forward pass calculations, Loss functions, and backward propagations"
+          ],
+          "projects": {
+            "Job": "Build a PyTorch network predicting loan approvals from applicant vectors",
+            "Freelancing": "Develop a lightweight rating estimation neural net for product listings",
+            "Build Projects": "Build a handwriting digits classifier (MNIST) using PyTorch"
+          },
+          "alternativeQuests": [
+            "Write a custom training loop with optimizer steps and epoch validations",
+            "Analyze activation function differences (ReLU, Sigmoid, Tanh) on training loss"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: PyTorch is the industry gold standard for AI research. Keep your tensors clean and always monitor your loss gradients during training!"
+        },
+        {
+          "week": "Week 7",
+          "topic": "Computer Vision & Convolutional Neural Networks (CNNs)",
+          "tasks": [
+            "Understand convolutions, pooling, stride, and padding operations",
+            "Master Transfer Learning workflows using pre-trained ResNet/VGG weights",
+            "Perform image augmentation transformations preventing model overfitting"
+          ],
+          "projects": {
+            "Job": "Train a medical scanner finding abnormalities in chest scans using ResNet",
+            "Freelancing": "Build a custom product-image classification pipeline for an online store client",
+            "Build Projects": "Deploy a cat-vs-dog image classifier trained on custom photos"
+          },
+          "alternativeQuests": [
+            "Analyze convolution activation maps to visualize what features the network detects",
+            "Tune learning rate schedulers to stabilize deep network training cycles"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Don't train deep models from scratch unless you have massive datasets and computing resources. Always use transfer learning!"
+        },
+        {
+          "week": "Week 8",
+          "topic": "Machine Learning Deployment (MLOps)",
+          "tasks": [
+            "Export models using ONNX or serialization (Joblib/Pickle) systems",
+            "Build web server microservices around models using FastAPI/Flask",
+            "Deploy model endpoints containerized with Docker to cloud runtimes"
+          ],
+          "projects": {
+            "Job": "Deploy an active FastAPI server serving real-time predictions with verification schemas",
+            "Freelancing": "Hand over a self-contained prediction Docker stack to a client",
+            "Build Projects": "Launch a live website predicting stock prices based on CSV uploads"
+          },
+          "alternativeQuests": [
+            "Write unit tests verifying input schema validation on the fastapi prediction route",
+            "Configure simple prometheus logging tracking average prediction latencies"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: A model that only runs on your local Jupyter Notebook provides zero value to the company. Master API deployments first!"
+        }
+      ]
+    },
+    "CyberSecurity": {
+      "title": "Advanced Cyber Security & SecOps",
+      "description": "Master network protocols, penetration testing tools, OWASP vulnerabilities, threat hunting, and infrastructure protection.",
+      "baseWeeks": [
+        {
+          "week": "Week 1",
+          "topic": "Networking Foundations & Linux CLI",
+          "tasks": [
+            "Master TCP/IP, OSI model layers, routing, subnetting, and DNS systems",
+            "Learn Linux terminal commands, file permissions, and bash scripting",
+            "Analyze network traffic packets using Wireshark filters"
+          ],
+          "projects": {
+            "Job": "Conduct a port scan and network topology analysis on a lab network",
+            "Freelancing": "Write a bash automation script auditing user permissions for client hosts",
+            "Build Projects": "Write a lightweight network port scanner in python"
+          },
+          "alternativeQuests": [
+            "Capture and decrypt HTTP authentication headers on a test local network",
+            "Configure custom firewall routing policies inside a Linux sandbox environment"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: You cannot defend what you don't understand. Networking is the foundation of cybersecurity. Learn how packets move first!"
+        },
+        {
+          "week": "Week 2",
+          "topic": "Reconnaissance, Scanning & Threat Intel",
+          "tasks": [
+            "Master active scanning techniques using Nmap, Masscan, and Gobuster",
+            "Understand Open Source Intelligence (OSINT) tools and frameworks",
+            "Analyze target subdomains and active service banners"
+          ],
+          "projects": {
+            "Job": "Perform a comprehensive security audit report on a target testing website",
+            "Freelancing": "Audit external security vulnerabilities of a client company's public servers",
+            "Build Projects": "Build a subdomain scanner checking certificate transparency logs"
+          },
+          "alternativeQuests": [
+            "Identify out-of-date service versions running on standard port services",
+            "Audit metadata leaks in public PDF files hosted on a company site"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Scanning is the phase where you find target entry points. Be thorough and verify all scan results before attempting exploits."
+        },
+        {
+          "week": "Week 3",
+          "topic": "OWASP Top 10 Web Security",
+          "tasks": [
+            "Master SQL Injection (SQLi) types and parameterization protections",
+            "Understand Cross-Site Scripting (XSS) models and sanitization rules",
+            "Analyze Cross-Site Request Forgery (CSRF) and secure cookie tokens"
+          ],
+          "projects": {
+            "Job": "Audit a vulnerable web application, listing all OWASP Top 10 bugs",
+            "Freelancing": "Secure a client's website contact forms from malicious injection payloads",
+            "Build Projects": "Build an interactive web playground illustrating XSS impacts"
+          },
+          "alternativeQuests": [
+            "Exploit a local SQL injection vulnerability to retrieve database users",
+            "Implement content security policy (CSP) headers protecting a site from XSS"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Web security is essential. Secure your input forms, sanitize your HTML outputs, and always use HTTPOnly cookies to protect session tokens!"
+        },
+        {
+          "week": "Week 4",
+          "topic": "System Exploitations & Metasploit",
+          "tasks": [
+            "Configure Metasploit framework for penetration testing workflows",
+            "Understand exploit payloads, reverse shells, and bind shells",
+            "Identify and perform basic local privilege escalation checks"
+          ],
+          "projects": {
+            "Job": "Exploit a vulnerable Windows/Linux server in a safe test lab environment",
+            "Freelancing": "Conduct a vulnerability assessment for a client's internal host systems",
+            "Build Projects": "Develop a reverse shell payload listener tool in python"
+          },
+          "alternativeQuests": [
+            "Migrate active process tokens to escalate user status to SYSTEM inside Windows",
+            "Evade basic antivirus detection by encoding custom payload signatures"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Penetration testing is about finding paths, not breaking things. Always document your steps and maintain strict legal authorization boundaries!"
+        },
+        {
+          "week": "Week 5",
+          "topic": "Cryptography & Communication Security",
+          "tasks": [
+            "Understand Symmetric (AES) vs Asymmetric (RSA) encryption models",
+            "Configure SSL/TLS protocols and audit secure certificate configurations",
+            "Implement public key infrastructure (PKI) systems for secure server logins"
+          ],
+          "projects": {
+            "Job": "Configure a secure SSH key infrastructure removing password logins",
+            "Freelancing": "Set up end-to-end file encryption pipelines for client databases",
+            "Build Projects": "Build an encrypted local chat app encrypting packets with RSA"
+          },
+          "alternativeQuests": [
+            "Verify cryptographic signatures on file downloads using sha256 checksums",
+            "Decrypt and audit expired TLS certificates on public web domains"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Never roll your own crypto! Always use standard, proven cryptographic libraries like OpenSSL or Sodium to encrypt data."
+        },
+        {
+          "week": "Week 6",
+          "topic": "Defensive Security, SIEM & Auditing",
+          "tasks": [
+            "Configure Snort or Suricata intrusion detection system (IDS) rules",
+            "Parse security event logs using SIEM systems (Elastic stack / Splunk)",
+            "Audit server security logs for active brute-force login attempts"
+          ],
+          "projects": {
+            "Job": "Deploy an Elastic agent tracking system access logs and alerts",
+            "Freelancing": "Configure automated security event alarms for client servers",
+            "Build Projects": "Build a custom log analyzer alerting on recursive login failures"
+          },
+          "alternativeQuests": [
+            "Write custom Snort rules blocking malicious packet headers",
+            "Deploy a honeypot server logging automated hacker scans"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Defensive security is just as important as offensive. Master log analysis, as it is the primary way teams detect active breaches in production!"
+        },
+        {
+          "week": "Week 7",
+          "topic": "Cloud Infrastructure & Container Security",
+          "tasks": [
+            "Audit IAM access roles inside AWS/GCP to enforce least privilege",
+            "Configure secure Virtual Private Clouds (VPCs) and subnet route tables",
+            "Scan Docker container images for known security vulnerabilities"
+          ],
+          "projects": {
+            "Job": "Deploy a secure AWS application stack separating DB from web layer",
+            "Freelancing": "Audit AWS cloud infrastructure security for a client's startup portal",
+            "Build Projects": "Build a scanning pipeline rejecting Docker builds with high CVE profiles"
+          },
+          "alternativeQuests": [
+            "Build custom IAM rules limiting access to a specific S3 data bucket",
+            "Secure a Kubernetes cluster using network policies separating pod traffic"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: Cloud security is all about isolation. Never expose database ports to the public web, and always limit access permissions!"
+        },
+        {
+          "week": "Week 8",
+          "topic": "Incident Response & Malware Basics",
+          "tasks": [
+            "Understand the Incident Response lifecycle (Preparation to Post-Incident)",
+            "Analyze basic malware files inside secure sandboxed environments",
+            "Perform digital forensics tracking file access and memory logs"
+          ],
+          "projects": {
+            "Job": "Deliver an Incident Response report detailing a mock ransomware breach",
+            "Freelancing": "Develop an Incident Response plan booklet for a client business",
+            "Build Projects": "Deploy a sandboxed malware visualization portal showing process hooks"
+          },
+          "alternativeQuests": [
+            "Extract active indicators of compromise (IOCs) from a compromised host system",
+            "Perform a memory dump audit of a running process using forensic tools"
+          ],
+          "adfarTip": "Adfar Sir's Pro Tip: When a breach happens, remaining calm is key. Follow your incident response steps, preserve evidence, and focus on containment first!"
+        }
+      ]
     }
   },
   "globalTips": [

@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import HeroLeadForm from "@/components/HeroLeadForm";
 import { clientPromise } from "@/lib/mongodb";
 import { ArrowRight, Calendar, Clock, Users, Star, CheckCircle, ChevronRight, Zap } from "lucide-react";
+import InstructorSwiper from "@/components/InstructorSwiper";
+import TestimonialSwiper from "@/components/TestimonialSwiper";
 
 // Inline social icons for compatibility with older lucide-react versions in Server Components
 function YoutubeIcon({ size = 16 }) {
@@ -141,7 +143,7 @@ const STATS = [
 async function getPageData() {
   try {
     const { db } = await import("@/lib/mongodb");
-    const [batches, masterclasses, settingsDoc] = await Promise.all([
+    const [batches, masterclasses, settingsDoc, instructors, testimonials] = await Promise.all([
       db.collection("batches").find({ status: "active" }).limit(3).toArray(),
       db
         .collection("masterclasses")
@@ -150,6 +152,8 @@ async function getPageData() {
         .limit(3)
         .toArray(),
       db.collection("settings").findOne({ key: "socials" }),
+      db.collection("instructors").find({}).toArray(),
+      db.collection("testimonials").find({ status: "published" }).toArray(),
     ]);
     return {
       batches: batches.map((b) => ({ ...b, _id: b._id.toString() })),
@@ -159,12 +163,16 @@ async function getPageData() {
         scheduledAt: m.scheduledAt?.toISOString(),
       })),
       settings: settingsDoc || { instagram: "", linkedin: "", youtube: "", twitter: "", customLinks: [] },
+      instructors: instructors.map((i) => ({ ...i, _id: i._id.toString() })),
+      testimonials: testimonials.map((t) => ({ ...t, _id: t._id.toString() })),
     };
   } catch {
     return { 
       batches: [], 
       masterclasses: [], 
-      settings: { instagram: "", linkedin: "", youtube: "", twitter: "", customLinks: [] } 
+      settings: { instagram: "", linkedin: "", youtube: "", twitter: "", customLinks: [] },
+      instructors: [],
+      testimonials: []
     };
   }
 }
@@ -195,14 +203,25 @@ const FALLBACK_BATCHES = [
 ];
 
 const CATEGORY_COLORS = {
-  FSD: { bg: "rgba(59,130,246,0.1)", text: "#1D4ED8" },
-  DSA: { bg: "rgba(45,106,79,0.1)", text: "#2D6A4F" },
-  GenAI: { bg: "rgba(244,169,66,0.15)", text: "#D4891E" },
+  FSD: { bg: "rgba(59,130,246,0.1)", text: "#1D4ED8", bar: "linear-gradient(90deg, #3B82F6, #6366F1)" },
+  DSA: { bg: "rgba(45,106,79,0.1)", text: "#2D6A4F", bar: "linear-gradient(90deg, #2D6A4F, #52B788)" },
+  GenAI: { bg: "rgba(244,169,66,0.15)", text: "#D4891E", bar: "linear-gradient(90deg, #F4A942, #D4891E)" },
+  DataAnalytics: { bg: "rgba(13,148,136,0.1)", text: "#0F766E", bar: "linear-gradient(90deg, #0D9488, #14B8A6)" },
+  DataScience: { bg: "rgba(124,58,237,0.1)", text: "#6D28D9", bar: "linear-gradient(90deg, #7C3AED, #A78BFA)" },
+  Fundamentals: { bg: "rgba(225,29,72,0.1)", text: "#BE123C", bar: "linear-gradient(90deg, #E11D48, #F43F5E)" },
+  CyberSecurity: { bg: "rgba(217,119,6,0.1)", text: "#B45309", bar: "linear-gradient(90deg, #D97706, #F59E0B)" },
 };
 
 export default async function HomePage() {
-  const { batches: dbBatches, masterclasses, settings } = await getPageData();
+  const { batches: dbBatches, masterclasses, settings, instructors, testimonials } = await getPageData();
   const batches = dbBatches.length > 0 ? dbBatches : FALLBACK_BATCHES;
+
+  const adfarBatches = batches.filter(
+    (b) => !b.instructorName || b.instructorName.toLowerCase().includes("adfar")
+  );
+  const schoolBatches = batches.filter(
+    (b) => b.instructorName && !b.instructorName.toLowerCase().includes("adfar")
+  );
 
   const upcomingBatch = batches.find((b) => {
     if (!b.startDate || b.status !== "active") return false;
@@ -287,7 +306,7 @@ export default async function HomePage() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Learn FSD, DSA &amp; GenAI from{" "}
+                Premium Grassroots Tech Academy &amp;{" "}
                 <span
                   style={{
                     background: "linear-gradient(135deg, #F4A942, #2D6A4F)",
@@ -296,18 +315,18 @@ export default async function HomePage() {
                     backgroundClip: "text",
                   }}
                 >
-                  Kashmir's own
+                  Employability Cohorts
                 </span>
               </h1>
 
               {/* Animated Mission Banner */}
               <div className="mission-banner">
-                <span className="mission-badge">My Core Belief &amp; Mission 🎯</span>
+                <span className="mission-badge">Our Core Belief &amp; Mission 🎯</span>
                 <p className="mission-text-highlight">
                   &ldquo;Goal is not to crack <span style={{ color: "var(--color-saffron-dark)", fontWeight: 800 }}>FAANG</span>, but your <span style={{ color: "var(--color-forest)", fontWeight: 800 }}>first internship</span> or <span style={{ color: "var(--color-forest)", fontWeight: 800 }}>first Job</span>.&rdquo;
                 </p>
-                <p style={{ fontSize: "14px", color: "var(--color-muted)", margin: 0, lineHeight: 1.5 }}>
-                  Live sessions by <strong style={{ color: "var(--color-charcoal)", fontWeight: 600 }}>Adfar Rasheed</strong>. We cut the hype and focus on raw engineering, real-world projects, and hands-on guidance to help you land your job.
+                <p style={{ fontSize: "14.5px", color: "var(--color-muted)", margin: 0, lineHeight: 1.5 }}>
+                  Live, interactive cohorts by our team of <strong style={{ color: "var(--color-charcoal)", fontWeight: 600 }}>expert educators</strong> and industry specialists. We cut the hype and focus on raw engineering, practical tools, and hands-on guidance to help you stand on your own feet.
                 </p>
               </div>
 
@@ -399,7 +418,7 @@ export default async function HomePage() {
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <span className="badge badge-saffron" style={{ marginBottom: "16px", display: "inline-block" }}>
-              Long-Term Batches
+              EduPiS School Academy
             </span>
             <h2
               style={{
@@ -410,12 +429,13 @@ export default async function HomePage() {
                 marginBottom: "16px",
               }}
             >
-              Learn from scratch. Build for real.
+              Industry Cohorts. Learn from Masters.
             </h2>
-            <p style={{ fontSize: "17px", color: "var(--color-muted)", maxWidth: "500px", margin: "0 auto" }}>
-              Every batch runs live with 3 sessions every week — focused Q&amp;A, instruction, and guided projects.
+            <p style={{ fontSize: "17px", color: "var(--color-muted)", maxWidth: "550px", margin: "0 auto" }}>
+              Every cohort runs live with 3 sessions every week — focused Q&amp;A, step-by-step instruction, and production-grade project builds.
             </p>
           </div>
+
           {/* Dynamic Upcoming Batch Banner managed by Admin via startDate */}
           {upcomingBatch && (
             <div
@@ -505,133 +525,271 @@ export default async function HomePage() {
             </div>
           )}
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-            {batches.map((batch) => {
-              const catColors = CATEGORY_COLORS[batch.category] || CATEGORY_COLORS["FSD"];
-              const isUpcoming = batch.startDate && (() => {
-                const start = new Date(batch.startDate);
-                const diffTime = start.getTime() - new Date().getTime();
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                return diffDays >= -2 && diffDays <= 12;
-              })();
+          {/* ── SECTION A: Cohorts Taught by Adfar Rasheed ── */}
+          {adfarBatches.length > 0 && (
+            <div style={{ marginBottom: "56px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
+                <span className="badge badge-saffron" style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  Adfar's Signature Cohorts
+                </span>
+                <span style={{ fontSize: "14.5px", color: "var(--color-muted)", fontWeight: 500 }}>Taught directly by founder Adfar Rasheed</span>
+                <span style={{ height: "1.5px", flex: 1, background: "rgba(244,169,66,0.18)" }} />
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "28px" }}>
+                {adfarBatches.map((batch) => {
+                  const catColors = CATEGORY_COLORS[batch.category] || CATEGORY_COLORS["FSD"];
+                  const isUpcoming = batch.startDate && (() => {
+                    const start = new Date(batch.startDate);
+                    const diffTime = start.getTime() - new Date().getTime();
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    return diffDays >= -2 && diffDays <= 12;
+                  })();
 
-              return (
-                <div
-                  key={batch._id}
-                  className="card"
-                  style={
-                    isUpcoming
-                      ? {
-                          border: "2px solid var(--color-saffron)",
-                          boxShadow: "0 12px 40px rgba(244,169,66,0.18)",
-                          position: "relative",
-                        }
-                      : {}
-                  }
-                >
-                  {/* Card header */}
-                  <div
-                    style={{
-                      height: "8px",
-                      background:
-                        batch.category === "FSD"
-                          ? "linear-gradient(90deg, #3B82F6, #6366F1)"
-                          : batch.category === "DSA"
-                          ? "linear-gradient(90deg, #2D6A4F, #52B788)"
-                          : "linear-gradient(90deg, #F4A942, #D4891E)",
-                    }}
-                  />
-                  <div style={{ padding: "28px" }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
-                      <span
-                        className="badge"
-                        style={{ background: catColors.bg, color: catColors.text }}
-                      >
-                        {batch.category}
-                      </span>
-                      {isUpcoming ? (
-                        <span className="badge badge-saffron" style={{ animation: "pulse 2s ease-in-out infinite" }}>
-                          🔥 Starting Next Week!
-                        </span>
-                      ) : (
-                        <span className="badge badge-forest" style={{ fontSize: "11px" }}>
-                          3 sessions / week
-                        </span>
-                      )}
-                    </div>
-
-                    <h3
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: "22px",
-                        fontWeight: 700,
-                        marginBottom: "10px",
-                        color: "var(--color-charcoal)",
-                      }}
+                  return (
+                    <div
+                      key={batch._id}
+                      className="card"
+                      style={
+                        isUpcoming
+                          ? {
+                              border: "2px solid var(--color-saffron)",
+                              boxShadow: "0 12px 40px rgba(244,169,66,0.18)",
+                              position: "relative",
+                            }
+                          : {}
+                      }
                     >
-                      {batch.title}
-                    </h3>
-                    <p style={{ fontSize: "14px", color: "var(--color-muted)", marginBottom: "20px", lineHeight: 1.6 }}>
-                      {batch.description}
-                    </p>
-
-                    <div style={{ display: "flex", gap: "20px", marginBottom: "24px" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--color-muted)" }}>
-                        <Clock size={13} />
-                        {batch.duration} months
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--color-muted)" }}>
-                        <Calendar size={13} />
-                        3 sessions/week
-                      </div>
-                    </div>
-
-                    {isUpcoming && (
                       <div
                         style={{
-                          fontSize: "12px",
-                          fontWeight: 700,
-                          color: "var(--color-saffron-dark)",
-                          background: "rgba(244,169,66,0.08)",
-                          padding: "8px 12px",
-                          borderRadius: "8px",
-                          marginBottom: "16px",
-                          textAlign: "center",
-                          border: "1px dashed rgba(244,169,66,0.3)"
+                          height: "8px",
+                          background: catColors.bar || "linear-gradient(90deg, #3B82F6, #6366F1)",
                         }}
-                      >
-                        🚨 New Batch starting next week on {new Date(batch.startDate).toLocaleDateString("en-IN", { month: "short", day: "numeric" })}! Enrollments closing soon.
-                      </div>
-                    )}
+                      />
+                      <div style={{ padding: "28px" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
+                          <span className="badge" style={{ background: catColors.bg, color: catColors.text }}>
+                            {batch.category}
+                          </span>
+                          {isUpcoming ? (
+                            <span className="badge badge-saffron" style={{ animation: "pulse 2s ease-in-out infinite" }}>
+                              🔥 Starting Next Week!
+                            </span>
+                          ) : (
+                            <span className="badge badge-forest" style={{ fontSize: "11px" }}>
+                              3 sessions / week
+                            </span>
+                          )}
+                        </div>
 
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div>
-                        <span
+                        <h3
                           style={{
                             fontFamily: "var(--font-display)",
-                            fontSize: "28px",
+                            fontSize: "22px",
                             fontWeight: 700,
+                            marginBottom: "10px",
                             color: "var(--color-charcoal)",
                           }}
                         >
-                          ₹{batch.fees?.toLocaleString("en-IN")}
-                        </span>
-                        <span style={{ fontSize: "13px", color: "var(--color-muted)", marginLeft: "4px" }}>/ batch</span>
+                          {batch.title}
+                        </h3>
+                        <p style={{ fontSize: "14px", color: "var(--color-muted)", marginBottom: "20px", lineHeight: 1.6 }}>
+                          {batch.description}
+                        </p>
+
+                        <div style={{ display: "flex", gap: "20px", marginBottom: "24px" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--color-muted)" }}>
+                            <Clock size={13} />
+                            {batch.duration} months
+                          </div>
+                          <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--color-muted)" }}>
+                            <Calendar size={13} />
+                            3 sessions/week
+                          </div>
+                        </div>
+
+                        {isUpcoming && (
+                          <div
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: 700,
+                              color: "var(--color-saffron-dark)",
+                              background: "rgba(244,169,66,0.08)",
+                              padding: "8px 12px",
+                              borderRadius: "8px",
+                              marginBottom: "16px",
+                              textAlign: "center",
+                              border: "1px dashed rgba(244,169,66,0.3)"
+                            }}
+                          >
+                            🚨 New Batch starting next week on {new Date(batch.startDate).toLocaleDateString("en-IN", { month: "short", day: "numeric" })}! Enrollments closing soon.
+                          </div>
+                        )}
+
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <div>
+                            <span
+                              style={{
+                                fontFamily: "var(--font-display)",
+                                fontSize: "28px",
+                                fontWeight: 700,
+                                color: "var(--color-charcoal)",
+                              }}
+                            >
+                              ₹{batch.fees?.toLocaleString("en-IN")}
+                            </span>
+                            <span style={{ fontSize: "13px", color: "var(--color-muted)", marginLeft: "4px" }}>/ batch</span>
+                          </div>
+                          <Link
+                            href={`/batches/${batch.slug}`}
+                            className="btn-primary"
+                            style={{ padding: "10px 20px", fontSize: "14px" }}
+                          >
+                            View Batch
+                            <ChevronRight size={16} />
+                          </Link>
+                        </div>
                       </div>
-                      <Link
-                        href={`/batches/${batch.slug}`}
-                        className="btn-primary"
-                        style={{ padding: "10px 20px", fontSize: "14px" }}
-                      >
-                        View Batch
-                        <ChevronRight size={16} />
-                      </Link>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* ── SECTION B: EduPiS School Cohorts & Programs ── */}
+          {schoolBatches.length > 0 && (
+            <div style={{ marginBottom: "56px" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "28px" }}>
+                <span className="badge badge-forest" style={{ fontSize: "13px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  EduPiS Specialized Cohorts
+                </span>
+                <span style={{ fontSize: "14.5px", color: "var(--color-muted)", fontWeight: 500 }}>Led by Industry Specialists</span>
+                <span style={{ height: "1.5px", flex: 1, background: "rgba(45,106,79,0.18)" }} />
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "28px" }}>
+                {schoolBatches.map((batch) => {
+                  const catColors = CATEGORY_COLORS[batch.category] || CATEGORY_COLORS["FSD"];
+                  const isUpcoming = batch.startDate && (() => {
+                    const start = new Date(batch.startDate);
+                    const diffTime = start.getTime() - new Date().getTime();
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    return diffDays >= -2 && diffDays <= 12;
+                  })();
+
+                  return (
+                    <div
+                      key={batch._id}
+                      className="card"
+                      style={
+                        isUpcoming
+                          ? {
+                              border: "2px solid var(--color-saffron)",
+                              boxShadow: "0 12px 40px rgba(244,169,66,0.18)",
+                              position: "relative",
+                            }
+                          : {}
+                      }
+                    >
+                      <div
+                        style={{
+                          height: "8px",
+                          background: catColors.bar || "linear-gradient(90deg, #3B82F6, #6366F1)",
+                        }}
+                      />
+                      <div style={{ padding: "28px" }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
+                          <span className="badge" style={{ background: catColors.bg, color: catColors.text }}>
+                            {batch.category}
+                          </span>
+                          {isUpcoming ? (
+                            <span className="badge badge-saffron" style={{ animation: "pulse 2s ease-in-out infinite" }}>
+                              🔥 Starting Next Week!
+                            </span>
+                          ) : (
+                            <span className="badge badge-forest" style={{ fontSize: "11px" }}>
+                              3 sessions / week
+                            </span>
+                          )}
+                        </div>
+
+                        <h3
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            fontSize: "22px",
+                            fontWeight: 700,
+                            marginBottom: "4px",
+                            color: "var(--color-charcoal)",
+                          }}
+                        >
+                          {batch.title}
+                        </h3>
+                        <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "12.5px", color: "var(--color-muted)", marginBottom: "16px" }}>
+                          <span style={{ fontWeight: 600 }}>Taught by:</span>
+                          <span>{batch.instructorName || "Adfar Rasheed"}</span>
+                        </div>
+                        <p style={{ fontSize: "14px", color: "var(--color-muted)", marginBottom: "20px", lineHeight: 1.6 }}>
+                          {batch.description}
+                        </p>
+
+                        <div style={{ display: "flex", gap: "20px", marginBottom: "24px" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--color-muted)" }}>
+                            <Clock size={13} />
+                            {batch.duration} months
+                          </div>
+                          <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", color: "var(--color-muted)" }}>
+                            <Calendar size={13} />
+                            3 sessions/week
+                          </div>
+                        </div>
+
+                        {isUpcoming && (
+                          <div
+                            style={{
+                              fontSize: "12px",
+                              fontWeight: 700,
+                              color: "var(--color-saffron-dark)",
+                              background: "rgba(244,169,66,0.08)",
+                              padding: "8px 12px",
+                              borderRadius: "8px",
+                              marginBottom: "16px",
+                              textAlign: "center",
+                              border: "1px dashed rgba(244,169,66,0.3)"
+                            }}
+                          >
+                            🚨 New Batch starting next week on {new Date(batch.startDate).toLocaleDateString("en-IN", { month: "short", day: "numeric" })}! Enrollments closing soon.
+                          </div>
+                        )}
+
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                          <div>
+                            <span
+                              style={{
+                                fontFamily: "var(--font-display)",
+                                fontSize: "28px",
+                                fontWeight: 700,
+                                color: "var(--color-charcoal)",
+                              }}
+                            >
+                              ₹{batch.fees?.toLocaleString("en-IN")}
+                            </span>
+                            <span style={{ fontSize: "13px", color: "var(--color-muted)", marginLeft: "4px" }}>/ batch</span>
+                          </div>
+                          <Link
+                            href={`/batches/${batch.slug}`}
+                            className="btn-primary"
+                            style={{ padding: "10px 20px", fontSize: "14px" }}
+                          >
+                            View Batch
+                            <ChevronRight size={16} />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           <div style={{ textAlign: "center", marginTop: "40px" }}>
             <Link href="/batches" className="btn-secondary">
@@ -710,6 +868,33 @@ export default async function HomePage() {
         </section>
       )}
 
+      {/* ── OUR INSTRUCTORS ── */}
+      <section className="section" style={{ background: "var(--color-cream-dark)", borderBottom: "1px solid var(--color-cream-dark)" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
+            <span className="badge badge-forest" style={{ marginBottom: "16px", display: "inline-block" }}>
+              Our Expert Faculty
+            </span>
+            <h2
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(32px, 4vw, 44px)",
+                fontWeight: 700,
+                color: "var(--color-charcoal)",
+                marginBottom: "12px",
+              }}
+            >
+              Learn from Industry Practitioners
+            </h2>
+            <p style={{ fontSize: "16px", color: "var(--color-muted)", maxWidth: "550px", margin: "0 auto" }}>
+              Our courses are designed and taught by experienced developers, data scientists, and security specialists.
+            </p>
+          </div>
+
+          <InstructorSwiper instructors={instructors} />
+        </div>
+      </section>
+
       {/* ── ABOUT ADFAR ── */}
       <section className="section" style={{ background: "var(--color-cream)" }}>
         <div className="container">
@@ -762,7 +947,7 @@ export default async function HomePage() {
             {/* Right: bio */}
             <div>
               <span className="badge badge-saffron" style={{ marginBottom: "20px", display: "inline-block" }}>
-                About Your Instructor
+                Founder &amp; Lead Instructor
               </span>
               <h2
                 style={{
@@ -867,56 +1052,7 @@ export default async function HomePage() {
             </h2>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-            {HARDCODED_TESTIMONIALS.map((t) => (
-              <div
-                key={t.name}
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: "20px",
-                  padding: "28px",
-                  transition: "background 0.3s ease",
-                }}
-              >
-                {/* Stars */}
-                <div style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} size={14} color="#F4A942" fill="#F4A942" />
-                  ))}
-                </div>
-
-                <p style={{ fontSize: "15px", color: "rgba(255,255,255,0.75)", lineHeight: 1.7, marginBottom: "24px", fontStyle: "italic" }}>
-                  "{t.text}"
-                </p>
-
-                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                  <div
-                    style={{
-                      width: 42,
-                      height: 42,
-                      background: "linear-gradient(135deg, var(--color-saffron), var(--color-forest))",
-                      borderRadius: "50%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontFamily: "var(--font-display)",
-                      fontWeight: 700,
-                      fontSize: "16px",
-                      color: "white",
-                      flexShrink: 0,
-                    }}
-                  >
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <p style={{ color: "white", fontWeight: 600, fontSize: "14px" }}>{t.name}</p>
-                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "12px" }}>{t.location} · {t.batch}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TestimonialSwiper testimonials={testimonials} />
 
           {/* Animated Mission Banner (Dark Mode) */}
           <div className="mission-banner-dark" style={{ marginTop: "48px" }}>

@@ -13,6 +13,8 @@ const EMPTY_BATCH = {
   startDate: "",
   thumbnail: "",
   status: "draft",
+  instructorName: "",
+  instructorTitle: "",
 };
 
 export default function AdminBatchesPage() {
@@ -52,6 +54,8 @@ export default function AdminBatchesPage() {
       startDate: batch.startDate ? new Date(batch.startDate).toISOString().split("T")[0] : "",
       thumbnail: batch.thumbnail || "",
       status: batch.status || "draft",
+      instructorName: batch.instructorName || "",
+      instructorTitle: batch.instructorTitle || "",
     });
     setError("");
     setShowForm(true);
@@ -148,7 +152,9 @@ export default function AdminBatchesPage() {
                     <td>
                       <div>
                         <p style={{ fontWeight: 600, fontSize: "14px", color: "var(--color-charcoal)" }}>{batch.title}</p>
-                        <p style={{ fontSize: "12px", color: "var(--color-muted)" }}>/{batch.slug}</p>
+                        <p style={{ fontSize: "12px", color: "var(--color-muted)" }}>
+                          /{batch.slug} · Instructor: {batch.instructorName || "Adfar Rasheed"}
+                        </p>
                       </div>
                     </td>
                     <td>
@@ -273,6 +279,10 @@ export default function AdminBatchesPage() {
                     <option value="FSD">Full Stack Dev</option>
                     <option value="DSA">DSA</option>
                     <option value="GenAI">Generative AI</option>
+                    <option value="DataAnalytics">Data Analytics</option>
+                    <option value="DataScience">Data Science</option>
+                    <option value="Fundamentals">Programming Fundamentals</option>
+                    <option value="CyberSecurity">Cyber Security</option>
                   </select>
                 </div>
 
@@ -335,6 +345,28 @@ export default function AdminBatchesPage() {
                   value={form.thumbnail}
                   onChange={(e) => setForm({ ...form, thumbnail: e.target.value })}
                 />
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label">Instructor Name</label>
+                  <input
+                    className="input-field"
+                    placeholder="e.g. Adfar Rasheed"
+                    value={form.instructorName}
+                    onChange={(e) => setForm({ ...form, instructorName: e.target.value })}
+                  />
+                </div>
+
+                <div className="form-group" style={{ marginBottom: 0 }}>
+                  <label className="form-label">Instructor Title</label>
+                  <input
+                    className="input-field"
+                    placeholder="e.g. Lead Educator"
+                    value={form.instructorTitle}
+                    onChange={(e) => setForm({ ...form, instructorTitle: e.target.value })}
+                  />
+                </div>
               </div>
 
               <div style={{ display: "flex", gap: "12px", marginTop: "8px" }}>

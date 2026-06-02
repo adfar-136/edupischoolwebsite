@@ -28,7 +28,7 @@ export async function POST(request) {
   const session = await requireAdmin();
   if (!session) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  const { topic, description, scheduledAt, price, joinLink, recordingLink } = await request.json();
+  const { topic, description, scheduledAt, price, joinLink, recordingLink, instructorName, instructorTitle } = await request.json();
 
   if (!topic || !scheduledAt) {
     return NextResponse.json({ error: "Topic and scheduledAt are required" }, { status: 400 });
@@ -41,6 +41,8 @@ export async function POST(request) {
     price: parseInt(price) || 199,
     joinLink: joinLink || "",
     recordingLink: recordingLink || "",
+    instructorName: instructorName || "",
+    instructorTitle: instructorTitle || "",
     createdAt: new Date(),
   });
 

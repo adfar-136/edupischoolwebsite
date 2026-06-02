@@ -18,13 +18,13 @@ export async function PUT(request, { params }) {
   const body = await request.json();
 
   const update = { updatedAt: new Date() };
-  ["topic", "description", "price", "joinLink", "recordingLink", "instructorName", "instructorTitle"].forEach((f) => {
-    if (body[f] !== undefined) update[f] = body[f];
+  ["name", "location", "text", "avatar", "batch", "status"].forEach((field) => {
+    if (body[field] !== undefined) update[field] = body[field];
   });
-  if (body.scheduledAt) update.scheduledAt = new Date(body.scheduledAt);
-  if (body.price) update.price = parseInt(body.price);
 
-  await db.collection("masterclasses").updateOne({ _id: new ObjectId(id) }, { $set: update });
+  if (body.rating !== undefined) update.rating = parseInt(body.rating) || 5;
+
+  await db.collection("testimonials").updateOne({ _id: new ObjectId(id) }, { $set: update });
   return NextResponse.json({ success: true });
 }
 
@@ -33,6 +33,6 @@ export async function DELETE(request, { params }) {
   if (!session) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   const { id } = await params;
-  await db.collection("masterclasses").deleteOne({ _id: new ObjectId(id) });
+  await db.collection("testimonials").deleteOne({ _id: new ObjectId(id) });
   return NextResponse.json({ success: true });
 }

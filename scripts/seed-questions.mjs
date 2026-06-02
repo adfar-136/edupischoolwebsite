@@ -320,6 +320,60 @@ const QUESTIONS = [
     difficulty: "Hard",
     question: "Where do you see yourself in 5 years, and how does this role align with your long-term goals?",
     answer: "Show ambition coupled with execution:\n1. Technical Mastery: Express your goal to become a senior engineer, technical architect, or technical lead driving large scale features.\n2. Business Growth: Express excitement about seeing EduPiSchool scale, playing a key role in expanding cohorts, teaching pipelines, and technical systems.\n3. Alignment: Explain how the hands-on, end-to-end full stack environment here is the ultimate accelerator for your technical capabilities."
+  },
+  {
+    topic: "Data Analytics",
+    difficulty: "Easy",
+    question: "What is a Pivot Table in Excel and what is its primary use case?",
+    answer: "A Pivot Table is a powerful Excel feature used to summarize, sort, reorganize, group, count, total, or average data stored in a table or spreadsheet. It allows you to transform rows of detailed transactional data into clean, aggregated summary reports (e.g. total sales by region and product category) dynamically without writing complex formulas. It is highly interactive, enabling users to drag and drop fields to slice and dice information instantly."
+  },
+  {
+    topic: "Data Analytics",
+    difficulty: "Medium",
+    question: "Explain the difference between a LEFT JOIN and an INNER JOIN in SQL, with a business example.",
+    answer: "1. INNER JOIN: Returns only the rows where there is a match in both joined tables based on the join condition. If a key exists in one table but not the other, it is excluded from the results. E.g., joining an Orders table with a Customers table will list only orders placed by registered customers who exist in both tables.\n2. LEFT JOIN (or LEFT OUTER JOIN): Returns all rows from the left table, and the matched rows from the right table. If there is no match, the columns of the right table are filled with NULLs. E.g., left joining Customers with Orders will list all customers, including those who have never placed any orders (their order columns will show NULL), which is useful for identifying inactive clients."
+  },
+  {
+    topic: "Data Analytics",
+    difficulty: "Hard",
+    question: "What are Window Functions in SQL and how do they differ from GROUP BY aggregations?",
+    answer: "Window Functions perform calculations across a set of table rows that are somehow related to the current row, using the OVER() clause (e.g. ROW_NUMBER(), RANK(), SUM() OVER()).\nDifference from GROUP BY:\n- GROUP BY collapses multiple rows into a single summary row (losing access to individual row details).\n- Window Functions calculate an aggregate or ranking value for a set of rows but do NOT collapse the rows. Each individual row retains its separate identity, allowing you to display both the original detailed fields and the calculated aggregate side-by-side (e.g., displaying each transaction alongside the running total or regional average)."
+  },
+  {
+    topic: "Data Science",
+    difficulty: "Easy",
+    question: "What is Exploratory Data Analysis (EDA) and why is it important?",
+    answer: "Exploratory Data Analysis (EDA) is the crucial first step in any data science project. It involves analyzing and visualizing a dataset to understand its main characteristics, uncover patterns, detect anomalies, check assumptions, and identify relationships between variables before applying machine learning models. Standard tools include summary statistics, correlation heatmaps, box plots for outlier detection, and histograms for distributions. It is vital because training a model on uncleaned, biased, or misunderstood data leads to poor predictions (garbage in, garbage out)."
+  },
+  {
+    topic: "Data Science",
+    difficulty: "Medium",
+    question: "Explain the difference between Overfitting and Underfitting in Machine Learning, and how to prevent them.",
+    answer: "1. Overfitting: The model learns the training data *too* well, including its noise and random fluctuations. It performs exceptionally on training data but poorly on unseen test data (high variance, low bias). Prevention: Use regularization (L1/L2), simplify the model, get more training data, use dropout, or apply cross-validation.\n2. Underfitting: The model is too simple to capture the underlying pattern of the data (high bias, low variance). It performs poorly on both training and test data. Prevention: Increase model complexity, add more features, reduce regularization, or train for more epochs."
+  },
+  {
+    topic: "Data Science",
+    difficulty: "Hard",
+    question: "How does the backpropagation algorithm work in training deep neural networks?",
+    answer: "Backpropagation (backward propagation of errors) is the primary algorithm used to train neural networks by calculating the gradient of the loss function with respect to the network's weights.\nMechanism:\n1. Forward Pass: Input data propagates forward through the network layers to calculate the final prediction and compute the error (loss) against target values.\n2. Backward Pass: Using the Chain Rule of calculus, the algorithm calculates the partial derivatives of the loss function with respect to each weight, starting from the output layer and working backward through the hidden layers.\n3. Optimization: The calculated gradients are passed to an optimizer (like SGD or Adam) to update the weights in the direction that minimizes the loss (Gradient Descent)."
+  },
+  {
+    topic: "Cyber Security",
+    difficulty: "Easy",
+    question: "What is the difference between Symmetric and Asymmetric cryptography?",
+    answer: "1. Symmetric Cryptography: Uses the same single key for both encryption and decryption. Both sender and receiver must possess and keep this key secret. It is extremely fast and efficient for encrypting large volumes of data (e.g., AES). Key distribution is its primary challenge.\n2. Asymmetric Cryptography: Uses a mathematically related key pair: a Public Key (shared openly with anyone to encrypt messages) and a Private Key (kept secret by the owner to decrypt messages). It is slower but resolves the key exchange problem, making it ideal for secure handshakes and digital signatures (e.g., RSA, ECC)."
+  },
+  {
+    topic: "Cyber Security",
+    difficulty: "Medium",
+    question: "What is Cross-Site Scripting (XSS) and how can developers mitigate it?",
+    answer: "Cross-Site Scripting (XSS) is a vulnerability where an attacker injects malicious scripts (usually JavaScript) into a trusted website, which are then executed in the victim's browser.\nTypes: Stored (saved in DB), Reflected (passed in URLs), and DOM-based.\nMitigation Techniques:\n1. Context-Aware Output Encoding: Encode all user inputs before rendering them in the HTML body, attributes, JS, or CSS blocks (converting `<` to `&lt;`, etc.).\n2. Input Validation & Sanitization: Strictly validate input formats and use trusted libraries (like DOMPurify) to strip out script tags.\n3. Content Security Policy (CSP): Implement HTTP headers restricting where scripts can be loaded from and preventing inline script executions.\n4. Secure Cookies: Set the `HttpOnly` flag on session cookies so they cannot be accessed via client JS."
+  },
+  {
+    topic: "Cyber Security",
+    difficulty: "Hard",
+    question: "Explain the concept of SQL Injection (SQLi) and how parameterized queries prevent it.",
+    answer: "SQL Injection is a vulnerability where an attacker manipulates SQL queries by injecting malicious SQL statements into input fields, allowing them to bypass authentication, read, modify, or delete database records.\nParameterized Queries (Prepared Statements) prevent SQLi by separating the SQL code structure from the user data parameters:\n- Without Parameterization: User input is concatenated directly into the SQL string (e.g. `SELECT * FROM users WHERE name = '` + input + `'`). If `input` is `admin' OR '1'='1`, it alters the query logic.\n- With Parameterization: The database compiles the SQL query template first with placeholders (e.g., `SELECT * FROM users WHERE name = ?`). The user input is treated strictly as a literal value (a parameter) bound to the placeholder, never as executable SQL code, completely neutralizing any injected commands."
   }
 ];
 

@@ -20,6 +20,7 @@ const EMPTY_LECTURE = {
 export default function AdminLecturesPage() {
   const [lectures, setLectures] = useState([]);
   const [batches, setBatches] = useState([]);
+  const [allModules, setAllModules] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(null);
@@ -34,6 +35,7 @@ export default function AdminLecturesPage() {
     const data = await res.json();
     setLectures(data.lectures || []);
     setBatches(data.batches || []);
+    setAllModules(data.modules || []);
     setLoading(false);
   };
 
@@ -41,7 +43,14 @@ export default function AdminLecturesPage() {
 
   const openCreate = () => {
     setEditing(null);
-    setForm({ ...EMPTY_LECTURE, batchId: batches[0]?._id || "" });
+    const defaultBatchId = batches[0]?._id || "";
+    
+    setForm({
+      ...EMPTY_LECTURE,
+      batchId: defaultBatchId,
+      moduleName: "",
+      lectureNumber: 1
+    });
     setError("");
     setShowForm(true);
   };
@@ -105,6 +114,13 @@ export default function AdminLecturesPage() {
   };
 
   const filtered = filterBatch === "all" ? lectures : lectures.filter((l) => l.batchId === filterBatch);
+
+  const currentModuleLectures = form.batchId && form.moduleName
+    ? lectures.filter((l) => l.batchId === form.batchId && l.moduleName === form.moduleName)
+    : [];
+  const existingCount = currentModuleLectures.length;
+  const maxLectureNum = currentModuleLectures.reduce((max, l) => Math.max(max, l.lectureNumber || 0), 0);
+  const suggestedLectureNum = maxLectureNum + 1;
 
   return (
     <div style={{ padding: "32px 40px" }}>
@@ -219,7 +235,20 @@ export default function AdminLecturesPage() {
             <form onSubmit={handleSave} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <div className="form-group" style={{ marginBottom: 0 }}>
                 <label className="form-label">Batch</label>
-                <select className="input-field" value={form.batchId} onChange={(e) => setForm({ ...form, batchId: e.target.value })} required>
+                <select
+                  className="input-field"
+                  value={form.batchId}
+                  onChange={(e) => {
+                    const bId = e.target.value;
+                    setForm({
+                      ...form,
+                      batchId: bId,
+                      moduleName: "",
+                      lectureNumber: 1
+                    });
+                  }}
+                  required
+                >
                   <option value="">Select batch…</option>
                   {batches.map((b) => <option key={b._id} value={b._id}>{b.title}</option>)}
                 </select>
@@ -234,6 +263,11 @@ export default function AdminLecturesPage() {
                   <label className="form-label">Title</label>
                   <input className="input-field" required placeholder="Lecture title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
                 </div>
+                {form.moduleName && (
+                  <div style={{ gridColumn: "span 2", fontSize: "12.5px", color: "var(--color-muted)", background: "var(--color-cream-light)", padding: "8px 12px", borderRadius: "8px", border: "1px solid var(--color-cream-dark)", fontWeight: 500 }}>
+                    💡 Suggested: <strong>Lecture {suggestedLectureNum}</strong> ({existingCount} lectures already in module &quot;{form.moduleName}&quot;)
+                  </div>
+                )}
               </div>
 
               <div className="form-group" style={{ marginBottom: 0 }}>
@@ -242,8 +276,33 @@ export default function AdminLecturesPage() {
               </div>
 
               <div className="form-group" style={{ marginBottom: 0 }}>
-                <label className="form-label">Module Name</label>
-                <input className="input-field" placeholder="e.g. Web Development &amp; JS Basics" value={form.moduleName} onChange={(e) => setForm({ ...form, moduleName: e.target.value })} />
+                <label className="form-label">Module</label>
+                {allModules.filter(m => m.batchId === form.batchId).length === 0 ? (
+                  <div style={{ color: "#B91C1C", background: "rgba(220,38,38,0.08)", padding: "10px 12px", borderRadius: "8px", fontSize: "12.5px", border: "1px solid rgba(220,38,38,0.15)", fontWeight: 500 }}>
+                    ⚠️ No modules defined for this batch. Please define modules first in the Modules panel.
+                  </div>
+                ) : (
+                  <select
+                    className="input-field"
+                    value={form.moduleName}
+                    onChange={(e) => {
+                      const modName = e.target.value;
+                      if (!modName) {
+                        setForm({ ...form, moduleName: "", lectureNumber: 1 });
+                        return;
+                      }
+                      const moduleLectures = lectures.filter(l => l.batchId === form.batchId && l.moduleName === modName);
+                      const maxNum = moduleLectures.reduce((max, l) => Math.max(max, l.lectureNumber || 0), 0);
+                      setForm({ ...form, moduleName: modName, lectureNumber: maxNum + 1 });
+                    }}
+                    required
+                  >
+                    <option value="">Select a Module...</option>
+                    {allModules.filter(m => m.batchId === form.batchId).map((m) => (
+                      <option key={m._id} value={m.name}>{m.name}</option>
+                    ))}
+                  </select>
+                )}
               </div>
 
               <div className="form-group" style={{ marginBottom: 0 }}>
@@ -292,7 +351,7 @@ export default function AdminLecturesPage() {
               </div>
 
               <div style={{ display: "flex", gap: "12px", marginTop: "8px" }}>
-                <button type="submit" disabled={saving} className="btn-primary" style={{ flex: 1, justifyContent: "center", opacity: saving ? 0.7 : 1 }}>
+                <button type="submit" disabled={saving || (form.batchId && allModules.filter(m => m.batchId === form.batchId).length === 0)} className="btn-primary" style={{ flex: 1, justifyContent: "center", opacity: (saving || (form.batchId && allModules.filter(m => m.batchId === form.batchId).length === 0)) ? 0.7 : 1 }}>
                   <Save size={15} />
                   {saving ? "Saving…" : editing ? "Update Lecture" : "Add Lecture"}
                 </button>

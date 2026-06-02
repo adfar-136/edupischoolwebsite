@@ -269,7 +269,7 @@ export default async function BatchDetailPage({ params }) {
               )}
 
               <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
-                {["3 live sessions every week with Adfar", "Lifetime access to recordings", "Study resources & assignments", "Private student community"].map((f) => (
+                {[`3 live sessions every week with ${batch.instructorName || "Adfar Rasheed"}`, "Lifetime access to recordings", "Study resources & assignments", "Private student community"].map((f) => (
                   <div key={f} style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "13px", color: "rgba(255,255,255,0.55)" }}>
                     <CheckCircle size={13} color="#52B788" />
                     {f}
@@ -294,6 +294,66 @@ export default async function BatchDetailPage({ params }) {
           </div>
         </section>
       )}
+
+      {/* Instructor Section */}
+      <section style={{ background: "white", padding: "40px 0 16px" }}>
+        <div className="container">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "24px",
+              padding: "28px 32px",
+              background: "var(--color-cream)",
+              borderRadius: "20px",
+              border: "1px solid var(--color-cream-dark)",
+              flexWrap: "wrap",
+            }}
+          >
+            <div
+              style={{
+                width: 64,
+                height: 64,
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, var(--color-saffron), var(--color-forest))",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "var(--font-display)",
+                fontWeight: 700,
+                fontSize: "20px",
+                color: "white",
+                flexShrink: 0,
+              }}
+            >
+              {(batch.instructorName || "Adfar Rasheed")[0]}
+            </div>
+            <div>
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "2px 8px",
+                  background: "rgba(244,169,66,0.1)",
+                  color: "var(--color-saffron-dark)",
+                  borderRadius: "50px",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  marginBottom: "4px",
+                }}
+              >
+                Cohort Instructor
+              </span>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: "20px", fontWeight: 700, margin: 0, color: "var(--color-charcoal)" }}>
+                {batch.instructorName || "Adfar Rasheed"}
+              </h3>
+              <p style={{ fontSize: "13px", color: "var(--color-muted)", margin: "2px 0 0" }}>
+                {batch.instructorTitle || "Founder & Lead Educator"}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Curriculum */}
       <section className="section" style={{ background: "var(--color-cream)" }}>
@@ -380,7 +440,7 @@ export default async function BatchDetailPage({ params }) {
                   Ready to enroll?
                 </h3>
                 <p style={{ fontSize: "14px", color: "var(--color-muted)", marginBottom: "24px" }}>
-                  Join this batch and get live mentorship with 3 sessions every week by Adfar Rasheed.
+                  Join this batch and get live mentorship with 3 sessions every week by {batch.instructorName || "Adfar Rasheed"}.
                 </p>
 
                 <div

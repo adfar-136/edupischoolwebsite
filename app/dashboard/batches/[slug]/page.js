@@ -451,7 +451,7 @@ export default function BatchLecturePage() {
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 700, color: "var(--color-charcoal)", marginBottom: "6px" }}>
           {batch.title}
         </h1>
-        <p style={{ color: "var(--color-muted)", fontSize: "14px" }}>{batch.category} · {batch.duration} months</p>
+        <p style={{ color: "var(--color-muted)", fontSize: "14px" }}>{batch.category} · {batch.duration} months · Instructor: {batch.instructorName || "Adfar Rasheed"}</p>
       </div>
 
       {/* Progress bar */}
@@ -823,7 +823,7 @@ export default function BatchLecturePage() {
                       ) : (
                         <div>
                           <p style={{ fontSize: "13px", color: "var(--color-charcoal-light)", marginBottom: "12px" }}>
-                            How was your learning experience with Adfar in this class? Let us know:
+                            How was your learning experience with {batch.instructorName || "Adfar Rasheed"} in this class? Let us know:
                           </p>
                           
                           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>

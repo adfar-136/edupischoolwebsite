@@ -24,7 +24,7 @@ export async function POST(request) {
   if (!session) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   const body = await request.json();
-  const { title, slug, description, category, duration, fees, startDate, thumbnail, status } = body;
+  const { title, slug, description, category, duration, fees, startDate, thumbnail, status, instructorName, instructorTitle } = body;
 
   if (!title || !slug || !category) {
     return NextResponse.json({ error: "Title, slug, and category are required" }, { status: 400 });
@@ -45,6 +45,8 @@ export async function POST(request) {
     startDate: startDate ? new Date(startDate) : null,
     thumbnail: thumbnail || "",
     status: status || "draft",
+    instructorName: instructorName || "",
+    instructorTitle: instructorTitle || "",
     createdAt: new Date(),
   });
 

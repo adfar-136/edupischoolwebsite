@@ -72,7 +72,7 @@ export default function HeroLeadForm() {
           Inquiry Received!
         </h3>
         <p style={{ fontSize: "14px", color: "var(--color-muted)", lineHeight: 1.6, maxWidth: "280px" }}>
-          Thank you, <strong style={{ color: "var(--color-charcoal)" }}>{form.name}</strong>. Adfar or our team will get in touch with you shortly to share details. 🌸
+          Thank you, <strong style={{ color: "var(--color-charcoal)" }}>{form.name}</strong>. Our team of experts will get in touch with you shortly to share details. 🌸
         </p>
         <style>{`
           @keyframes scaleUp {
@@ -93,7 +93,7 @@ export default function HeroLeadForm() {
         </h3>
       </div>
       <p style={{ fontSize: "13px", color: "var(--color-muted)", marginBottom: "20px", lineHeight: 1.5 }}>
-        Fill out your details to get a direct syllabus brochure and request a callback from Adfar Rasheed.
+        Fill out your details to get a direct syllabus brochure and request a callback from our team of experts.
       </p>
 
       {error && (

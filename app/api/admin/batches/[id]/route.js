@@ -27,6 +27,8 @@ export async function PUT(request, { params }) {
   if (body.startDate !== undefined) update.startDate = body.startDate ? new Date(body.startDate) : null;
   if (body.thumbnail !== undefined) update.thumbnail = body.thumbnail;
   if (body.status !== undefined) update.status = body.status;
+  if (body.instructorName !== undefined) update.instructorName = body.instructorName;
+  if (body.instructorTitle !== undefined) update.instructorTitle = body.instructorTitle;
   update.updatedAt = new Date();
 
   await db.collection("batches").updateOne({ _id: new ObjectId(id) }, { $set: update });

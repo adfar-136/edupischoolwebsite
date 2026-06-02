@@ -27,6 +27,8 @@ const batches = [
     startDate: new Date("2026-06-01T00:00:00.000Z"),
     thumbnail: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80",
     status: "active",
+    instructorName: "Adfar Rasheed",
+    instructorTitle: "Founder & Lead Educator",
     createdAt: new Date(),
   },
   {
@@ -40,6 +42,53 @@ const batches = [
     startDate: new Date("2026-06-01T00:00:00.000Z"),
     thumbnail: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80",
     status: "active",
+    instructorName: "Adfar Rasheed",
+    instructorTitle: "Founder & Lead Educator",
+    createdAt: new Date(),
+  },
+  {
+    _id: new ObjectId("647712f20000000000000003"),
+    title: "Data Analytics Specialization",
+    slug: "data-analytics-specialization",
+    category: "DataAnalytics",
+    description: "Master Excel, SQL, Tableau, PowerBI, and Python for data analysis. Learn business translation and dashboards.",
+    fees: 4000,
+    duration: 4,
+    startDate: new Date("2026-06-15T00:00:00.000Z"),
+    thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    status: "active",
+    instructorName: "Sarah Jenkins",
+    instructorTitle: "Principal Analyst at Google",
+    createdAt: new Date(),
+  },
+  {
+    _id: new ObjectId("647712f20000000000000004"),
+    title: "Machine Learning & Data Science",
+    slug: "machine-learning-data-science",
+    category: "DataScience",
+    description: "Deep dive into statistical analysis, regression models, neural networks, and computer vision with PyTorch.",
+    fees: 6000,
+    duration: 6,
+    startDate: new Date("2026-06-20T00:00:00.000Z"),
+    thumbnail: "https://images.unsplash.com/photo-1527474305487-b87b222841cc?w=800&q=80",
+    status: "active",
+    instructorName: "Dr. Alan Turing",
+    instructorTitle: "AI Researcher & Lead Scientist",
+    createdAt: new Date(),
+  },
+  {
+    _id: new ObjectId("647712f20000000000000005"),
+    title: "Advanced Cyber Security & SecOps",
+    slug: "cyber-security-secops",
+    category: "CyberSecurity",
+    description: "Learn network defense, penetration testing, threat hunting, and cloud security architectures. 100% hands-on.",
+    fees: 5000,
+    duration: 5,
+    startDate: new Date("2026-07-01T00:00:00.000Z"),
+    thumbnail: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+    status: "active",
+    instructorName: "Alex Stone",
+    instructorTitle: "Certified Ethical Hacker & SecOps Lead",
     createdAt: new Date(),
   }
 ];
@@ -60,6 +109,7 @@ const lectures = [
       { name: "Git Commands Cheatsheet", url: "https://drive.google.com/file/git-commands" }
     ],
     completed: false,
+    moduleName: "Web Development & JS Basics",
     createdAt: new Date()
   },
   {
@@ -74,6 +124,7 @@ const lectures = [
       { name: "JS Execution Context Slides", url: "https://drive.google.com/file/js-internals" }
     ],
     completed: false,
+    moduleName: "Web Development & JS Basics",
     createdAt: new Date()
   },
   {
@@ -88,6 +139,7 @@ const lectures = [
       { name: "Event Loop Visualization Tools", url: "https://latentflip.com/loupe/" }
     ],
     completed: false,
+    moduleName: "Web Development & JS Basics",
     createdAt: new Date()
   },
 
@@ -104,6 +156,7 @@ const lectures = [
       { name: "React Diffing Algorithm Docs", url: "https://react.dev/" }
     ],
     completed: false,
+    moduleName: "Modern Frontend with React & Next.js",
     createdAt: new Date()
   },
   {
@@ -118,6 +171,7 @@ const lectures = [
       { name: "State hooks code examples", url: "https://drive.google.com/file/react-hooks" }
     ],
     completed: false,
+    moduleName: "Modern Frontend with React & Next.js",
     createdAt: new Date()
   },
   {
@@ -132,6 +186,7 @@ const lectures = [
       { name: "Next.js SSR vs SSG Guide", url: "https://nextjs.org/docs" }
     ],
     completed: false,
+    moduleName: "Modern Frontend with React & Next.js",
     createdAt: new Date()
   },
   {
@@ -146,6 +201,7 @@ const lectures = [
       { name: "Zustand Starter Store Template", url: "https://github.com/" }
     ],
     completed: false,
+    moduleName: "Modern Frontend with React & Next.js",
     createdAt: new Date()
   },
 
@@ -162,6 +218,7 @@ const lectures = [
       { name: "Express Architecture Best Practices", url: "https://drive.google.com/file/express-arch" }
     ],
     completed: false,
+    moduleName: "Backend, REST APIs & Databases",
     createdAt: new Date()
   },
   {
@@ -176,6 +233,7 @@ const lectures = [
       { name: "MongoDB Aggregations Cheatsheet", url: "https://drive.google.com/file/mongo-agg" }
     ],
     completed: false,
+    moduleName: "Backend, REST APIs & Databases",
     createdAt: new Date()
   },
   {
@@ -190,6 +248,7 @@ const lectures = [
       { name: "Relational Mapping Diagrams", url: "https://drive.google.com/file/rel-db" }
     ],
     completed: false,
+    moduleName: "Backend, REST APIs & Databases",
     createdAt: new Date()
   },
 
@@ -206,6 +265,7 @@ const lectures = [
       { name: "Auth Flow Diagram", url: "https://better-auth.com/" }
     ],
     completed: false,
+    moduleName: "Auth, Advanced Patterns & Cloud Deployment",
     createdAt: new Date()
   },
   {
@@ -220,6 +280,7 @@ const lectures = [
       { name: "Dockerfile Templates", url: "https://drive.google.com/file/dockerfiles" }
     ],
     completed: false,
+    moduleName: "Auth, Advanced Patterns & Cloud Deployment",
     createdAt: new Date()
   }
 ];
@@ -233,6 +294,8 @@ const masterclasses = [
     price: 199,
     joinLink: "https://meet.google.com/master-june-1",
     recordingLink: "",
+    instructorName: "Adfar Rasheed",
+    instructorTitle: "Founder & Lead Educator",
     createdAt: new Date()
   },
   {
@@ -242,6 +305,8 @@ const masterclasses = [
     price: 199,
     joinLink: "https://meet.google.com/master-june-8",
     recordingLink: "",
+    instructorName: "Adfar Rasheed",
+    instructorTitle: "Founder & Lead Educator",
     createdAt: new Date()
   },
   {
@@ -251,8 +316,136 @@ const masterclasses = [
     price: 199,
     joinLink: "https://meet.google.com/master-june-15",
     recordingLink: "",
+    instructorName: "Dr. Alan Turing",
+    instructorTitle: "AI Researcher & Lead Scientist",
     createdAt: new Date()
   }
+];
+
+const seedInstructors = [
+  {
+    name: "Adfar Rasheed",
+    title: "Founder & Lead Educator",
+    bio: "Tech educator and Full Stack Developer who formerly trained over 50,000 students at PW Skills and College Wallah. Specializes in MERN stack, DSA, and Generative AI workflows.",
+    image: "/adfar.jpg",
+    github: "",
+    linkedin: "https://www.linkedin.com/in/adfar-rasheed/",
+    twitter: "",
+    instagram: "https://www.instagram.com/adfarsirofficial",
+    youtube: "https://www.youtube.com/@adfar-rasheed",
+    createdAt: new Date(),
+  },
+  {
+    name: "Sarah Jenkins",
+    title: "Principal Analyst at Google",
+    bio: "Data analytics expert with 10+ years of experience. Teaches SQL, Tableau, PowerBI, and data-driven business modeling for high-scale enterprise operations.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80",
+    github: "https://github.com",
+    linkedin: "https://linkedin.com",
+    twitter: "",
+    instagram: "",
+    youtube: "",
+    createdAt: new Date(),
+  },
+  {
+    name: "Dr. Alan Turing",
+    title: "AI Researcher & Lead Scientist",
+    bio: "Specialist in machine learning models, statistical analysis, and deep neural network designs. Mentors students in python modeling and PyTorch aggregation architectures.",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=80",
+    github: "https://github.com",
+    linkedin: "https://linkedin.com",
+    twitter: "https://twitter.com",
+    instagram: "",
+    youtube: "",
+    createdAt: new Date(),
+  },
+  {
+    name: "Alex Stone",
+    title: "Certified Ethical Hacker",
+    bio: "Lead SecOps specialist specializing in threat hunting, network penetration testing, and security compliance. Passionate about bringing grassroots training to cybersecurity fields.",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&q=80",
+    github: "https://github.com",
+    linkedin: "https://linkedin.com",
+    twitter: "",
+    instagram: "",
+    youtube: "",
+    createdAt: new Date(),
+  }
+];
+
+const seedTestimonials = [
+  {
+    name: "Bilal Ahmad",
+    location: "Srinagar, Kashmir",
+    text: "Adfar's teaching style is completely different. He doesn't just show code — he explains *why* you're writing it. My understanding of Full Stack jumped 10x in the first month.",
+    avatar: "B",
+    batch: "FSD Batch",
+    rating: 5,
+    status: "published",
+    createdAt: new Date(),
+  },
+  {
+    name: "Rukhsar Nazir",
+    location: "Anantnag, Kashmir",
+    text: "I had tried multiple online platforms before. Nothing clicked until I joined EdupiSchool. The Sunday sessions are genuinely the best 3 hours of my week.",
+    avatar: "R",
+    batch: "DSA Batch",
+    rating: 5,
+    status: "published",
+    createdAt: new Date(),
+  },
+  {
+    name: "Aaqib Hussain",
+    location: "Baramulla, Kashmir",
+    text: "The GenAI batch changed my perspective on what's possible. I've already built two side projects using AI APIs — things I couldn't have imagined six months ago.",
+    avatar: "A",
+    batch: "GenAI Batch",
+    rating: 5,
+    status: "published",
+    createdAt: new Date(),
+  },
+  {
+    name: "Nida Shah",
+    location: "Sopore, Kashmir",
+    text: "The community here is unlike anything else. Adfar is responsive, motivating, and genuinely cares about student progress. Not just a teacher — a mentor.",
+    avatar: "N",
+    batch: "FSD Batch",
+    rating: 5,
+    status: "published",
+    createdAt: new Date(),
+  }
+];
+
+const seedModules = [
+  // Full Stack Development
+  { name: "Web Development & JS Basics", batchId: fsdBatchId.toString(), createdAt: new Date() },
+  { name: "Modern Frontend with React & Next.js", batchId: fsdBatchId.toString(), createdAt: new Date() },
+  { name: "Backend, REST APIs & Databases", batchId: fsdBatchId.toString(), createdAt: new Date() },
+  { name: "Auth, Advanced Patterns & Cloud Deployment", batchId: fsdBatchId.toString(), createdAt: new Date() },
+  
+  // Data Structures & Algorithms
+  { name: "Arrays, Strings & Recursion", batchId: dsaBatchId.toString(), createdAt: new Date() },
+  { name: "Linked Lists, Stacks & Queues", batchId: dsaBatchId.toString(), createdAt: new Date() },
+  { name: "Trees & Graphs", batchId: dsaBatchId.toString(), createdAt: new Date() },
+  { name: "Dynamic Programming & Greedy Algorithms", batchId: dsaBatchId.toString(), createdAt: new Date() },
+
+  // Data Analytics Specialization
+  { name: "Excel & SQL Fundamentals", batchId: "647712f20000000000000003", createdAt: new Date() },
+  { name: "Advanced SQL & Database Management", batchId: "647712f20000000000000003", createdAt: new Date() },
+  { name: "Tableau & PowerBI Dashboards", batchId: "647712f20000000000000003", createdAt: new Date() },
+  { name: "Python for Data Analysis", batchId: "647712f20000000000000003", createdAt: new Date() },
+
+  // Machine Learning & Data Science
+  { name: "Python & Data Science Stack", batchId: "647712f20000000000000004", createdAt: new Date() },
+  { name: "Statistical Analysis & Regression", batchId: "647712f20000000000000004", createdAt: new Date() },
+  { name: "Supervised & Unsupervised ML", batchId: "647712f20000000000000004", createdAt: new Date() },
+  { name: "Deep Learning & Computer Vision", batchId: "647712f20000000000000004", createdAt: new Date() },
+
+  // Advanced Cyber Security & SecOps
+  { name: "Network Security Fundamentals", batchId: "647712f20000000000000005", createdAt: new Date() },
+  { name: "Penetration Testing & Hacking", batchId: "647712f20000000000000005", createdAt: new Date() },
+  { name: "Threat Hunting & Incident Response", batchId: "647712f20000000000000005", createdAt: new Date() },
+  { name: "Cloud & SecOps Architectures", batchId: "647712f20000000000000005", createdAt: new Date() }
 ];
 
 async function seed() {
@@ -269,6 +462,13 @@ async function seed() {
     await db.collection("batches").insertMany(batches);
     console.log(`Seeded ${batches.length} batches!`);
 
+    // 1.5. Seed Modules
+    console.log("Clearing modules collection...");
+    await db.collection("modules").deleteMany({});
+    console.log("Seeding modules...");
+    await db.collection("modules").insertMany(seedModules);
+    console.log(`Seeded ${seedModules.length} modules!`);
+
     // 2. Seed Lectures
     console.log("Clearing lectures collection...");
     await db.collection("lectures").deleteMany({});
@@ -283,6 +483,20 @@ async function seed() {
     await db.collection("masterclasses").insertMany(masterclasses);
     console.log(`Seeded ${masterclasses.length} Sunday/Monday Masterclasses!`);
 
+    // 4. Seed Instructors
+    console.log("Clearing instructors collection...");
+    await db.collection("instructors").deleteMany({});
+    console.log("Seeding instructors...");
+    await db.collection("instructors").insertMany(seedInstructors);
+    console.log(`Seeded ${seedInstructors.length} instructors!`);
+
+    // 5. Seed Testimonials
+    console.log("Clearing testimonials collection...");
+    await db.collection("testimonials").deleteMany({});
+    console.log("Seeding testimonials...");
+    await db.collection("testimonials").insertMany(seedTestimonials);
+    console.log(`Seeded ${seedTestimonials.length} testimonials!`);
+
     console.log("\n=============================================");
     console.log("🚀 DATABASE SUCCESSFULLY SEEDED!");
     console.log("=============================================");
@@ -293,6 +507,8 @@ async function seed() {
     masterclasses.forEach((m, idx) => {
       console.log(`${idx + 1}. ${m.topic} (${m.scheduledAt.toLocaleDateString("en-IN")})`);
     });
+    console.log(`\nInstructors seeded: ${seedInstructors.length}`);
+    console.log(`Testimonials seeded: ${seedTestimonials.length}`);
     console.log("=============================================");
 
   } catch (error) {
